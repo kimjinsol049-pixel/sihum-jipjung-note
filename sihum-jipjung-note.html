@@ -524,12 +524,24 @@ select.inp{appearance:none;background-image:linear-gradient(45deg,transparent 50
   .weak-grid,.full-grid{grid-template-columns:1fr}
 }
 @container (max-width:860px){
+  /* 좁은 화면에서는 메뉴가 세로 목록 그대로 있으면 자료 목록·통계까지
+     화면 전체를 차지해 정작 문제(본문)가 한참 아래로 밀립니다.
+     그래서 메뉴만 한 줄 스크롤 탭으로 줄이고, 자료 목록·통계는
+     '과목 서랍' 화면에서 보도록 여기서는 접어 둡니다. */
   .appbody{grid-template-columns:1fr}
-  .rail{flex-direction:row;flex-wrap:wrap;align-items:center;border-right:0;border-bottom:1px solid var(--line)}
-  .rail-h{flex:1 0 100%;margin:0;padding:0}
-  .rail-div{flex:1 0 100%;margin:8px 0 5px}
-  .rail-foot{flex:1 0 100%;margin-top:8px}
-  .nav,.doc-i{width:auto}
+  .rail{
+    flex-direction:row;flex-wrap:nowrap;align-items:stretch;gap:2px;
+    border-right:0;border-bottom:1px solid var(--line);
+    padding:8px 10px;overflow-x:auto;-webkit-overflow-scrolling:touch;
+  }
+  .rail-h,.rail-div,.rail-foot,[data-raildocs]{display:none}
+  .nav{
+    position:relative;flex:none;width:auto;flex-direction:column;gap:3px;
+    padding:7px 10px;font-size:10px;text-align:center;white-space:nowrap;
+  }
+  .nav svg{width:17px;height:17px}
+  .nav em{display:none}
+  .nav .badge{position:absolute;top:3px;right:3px}
   .up-grid,.quiz-grid,.sum-grid{grid-template-columns:1fr}
   .drow,.dhead{grid-template-columns:minmax(0,1fr) 74px 84px}
   .drow .prog,.dhead .prog{display:none}
