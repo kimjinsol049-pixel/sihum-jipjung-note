@@ -1,0 +1,2288 @@
+<title>시험대비집중노트</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+
+<style>
+/* ══════════════════════════════════════════════════════
+   시험대비집중노트 — 방향 B(집중 콘솔)
+   라이트가 기본값, 다크는 토큰만 다시 정의합니다.
+   ══════════════════════════════════════════════════════ */
+:root{
+  --bg:#F3F4F7;
+  --panel:#FFFFFF;
+  --panel2:#EFF1F5;
+  --panel3:#E4E8EE;
+  --line:#DCE0E7;
+  --line2:#C4CBD6;
+  --line3:#A6AFBD;
+  --ink:#141821;
+  --ink2:#4D5668;
+  --ink3:#7A8494;
+  --ac:#2F5FE0;
+  --ac2:#1E48B8;
+  --ac-hover:#2450CC;
+  --ac-soft:#E9EFFD;
+  --ac-line:#BACCF8;
+  --btn-ink:#FFFFFF;
+  --ok:#1F9D63;
+  --ok-ink:#12683F;
+  --ok-soft:#E7F6EE;
+  --ok-line:#A9DCC3;
+  --bad:#D8443A;
+  --bad-ink:#A32B22;
+  --bad-soft:#FDECEA;
+  --bad-line:#F3BDB7;
+  --warn:#B7791F;
+  --warn-ink:#8A5A12;
+  --warn-soft:#FCF3E2;
+  --warn-line:#EBD3A3;
+  --flash:rgba(47,95,224,.2);
+  --shadow-app:0 20px 50px -34px rgba(20,24,33,.5);
+  --shadow-ph:0 16px 40px -26px rgba(20,24,33,.45);
+  --f:'IBM Plex Sans KR','Malgun Gothic','Apple SD Gothic Neo',system-ui,sans-serif;
+  --m:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0D1014;
+    --panel:#161B22;
+    --panel2:#1C222B;
+    --panel3:#232B36;
+    --line:#252D38;
+    --line2:#303A47;
+    --line3:#44505F;
+    --ink:#E5E9EF;
+    --ink2:#98A2B0;
+    --ink3:#6B7482;
+    --ac:#5B8CFF;
+    --ac2:#B7CCFF;
+    --ac-hover:#7CA4FF;
+    --ac-soft:#16233F;
+    --ac-line:#2C4A85;
+    --btn-ink:#06101F;
+    --ok:#3FBF7F;
+    --ok-ink:#7FDCAC;
+    --ok-soft:#10241B;
+    --ok-line:#2E7A57;
+    --bad:#F2635A;
+    --bad-ink:#F5A39C;
+    --bad-soft:#26110F;
+    --bad-line:#7A322E;
+    --warn:#E0A33E;
+    --warn-ink:#EBC382;
+    --warn-soft:#2A2113;
+    --warn-line:#5E4A22;
+    --flash:rgba(91,140,255,.18);
+    --shadow-app:0 24px 60px -30px rgba(0,0,0,.9);
+    --shadow-ph:0 20px 50px -28px rgba(0,0,0,.9);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0D1014;
+  --panel:#161B22;
+  --panel2:#1C222B;
+  --panel3:#232B36;
+  --line:#252D38;
+  --line2:#303A47;
+  --line3:#44505F;
+  --ink:#E5E9EF;
+  --ink2:#98A2B0;
+  --ink3:#6B7482;
+  --ac:#5B8CFF;
+  --ac2:#B7CCFF;
+  --ac-hover:#7CA4FF;
+  --ac-soft:#16233F;
+  --ac-line:#2C4A85;
+  --btn-ink:#06101F;
+  --ok:#3FBF7F;
+  --ok-ink:#7FDCAC;
+  --ok-soft:#10241B;
+  --ok-line:#2E7A57;
+  --bad:#F2635A;
+  --bad-ink:#F5A39C;
+  --bad-soft:#26110F;
+  --bad-line:#7A322E;
+  --warn:#E0A33E;
+  --warn-ink:#EBC382;
+  --warn-soft:#2A2113;
+  --warn-line:#5E4A22;
+  --flash:rgba(91,140,255,.18);
+  --shadow-app:0 24px 60px -30px rgba(0,0,0,.9);
+  --shadow-ph:0 20px 50px -28px rgba(0,0,0,.9);
+}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f);line-height:1.6;-webkit-font-smoothing:antialiased}
+.mono{font-family:var(--m)}
+a{color:var(--ac)}
+a:hover{color:var(--ac2)}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+:where(a,button,input,textarea,select,[tabindex]):focus-visible{outline:2px solid var(--ac);outline-offset:2px;border-radius:3px}
+h1,h2,h3,h4{margin:0;letter-spacing:-.02em}
+p{margin:0}
+ol,ul{margin:0;padding:0;list-style:none}
+
+.page{max-width:1340px;margin:0 auto;padding:0 24px 90px}
+@media (max-width:700px){ .page{padding:0 14px 56px} }
+
+/* ───── 페이지 헤더 ───── */
+.phead{padding:46px 0 26px}
+.phead .kicker{font-family:var(--m);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3)}
+.phead h1{font-size:clamp(26px,3.6vw,38px);font-weight:700;margin:14px 0 12px;letter-spacing:-.03em}
+.phead p{color:var(--ink2);font-size:15px;max-width:64ch;text-wrap:pretty}
+.phead .hint{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:12.5px;color:var(--ink2)}
+.phead .hint kbd{font-family:var(--m);font-size:11px;background:var(--panel2);border:1px solid var(--line);
+  border-radius:3px;padding:2px 7px;color:var(--ink2)}
+
+/* ══════════ 앱 프레임 ══════════ */
+.app{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--bg);
+  box-shadow:var(--shadow-app);container-type:inline-size}
+.topbar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:10px 16px;background:var(--panel);
+  border-bottom:1px solid var(--line)}
+.brand{font-size:13.5px;font-weight:700;letter-spacing:-.02em;white-space:nowrap}
+.brand i{display:inline-block;width:7px;height:7px;border-radius:2px;background:var(--ac);margin-right:7px;
+  transform:translateY(-1px)}
+.stabs{display:flex;gap:3px}
+.stab{font-size:12px;color:var(--ink2);padding:5px 11px;border-radius:3px;font-weight:500;
+  border:1px solid transparent;white-space:nowrap}
+.stab:hover{background:var(--panel2);color:var(--ink)}
+.stab.on{background:var(--ac-soft);color:var(--ac2);border-color:var(--ac-line);font-weight:600}
+.topstat{margin-left:auto;font-family:var(--m);font-size:11px;color:var(--ink3);
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+.tbtn{width:28px;height:28px;border:1px solid var(--line);border-radius:4px;display:flex;
+  align-items:center;justify-content:center;flex:none;color:var(--ink2)}
+.tbtn:hover{background:var(--panel2);color:var(--ink);border-color:var(--line2)}
+.tbtn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+
+.appbody{display:grid;grid-template-columns:190px minmax(0,1fr);min-height:680px}
+.rail{background:var(--panel);border-right:1px solid var(--line);padding:14px 12px;
+  display:flex;flex-direction:column;gap:3px}
+.rail-h{font-family:var(--m);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink3);padding:0 8px;margin-bottom:5px}
+.rail-div{height:1px;background:var(--line);margin:14px 0 12px}
+.nav{display:flex;align-items:center;gap:9px;padding:7px 8px;border-radius:4px;
+  font-size:12.5px;color:var(--ink2);text-align:left;width:100%}
+.nav svg{width:15px;height:15px;flex:none;stroke:currentColor;fill:none;stroke-width:1.6;
+  stroke-linecap:round;stroke-linejoin:round;opacity:.85}
+.nav em{margin-left:auto;font-family:var(--m);font-style:normal;font-size:10px;color:var(--ink3)}
+.nav:hover{background:var(--panel2);color:var(--ink)}
+.nav.on{background:var(--ac-soft);color:var(--ac2);font-weight:600}
+.nav.on svg{opacity:1}
+.nav.on em{color:var(--ac)}
+.nav .badge{margin-left:auto;font-family:var(--m);font-size:10px;color:var(--bad);
+  background:var(--bad-soft);border:1px solid var(--bad-line);border-radius:9px;padding:0 6px;line-height:16px}
+.nav em + .badge{margin-left:6px}
+.doc-i{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:7px 8px;
+  border-radius:4px;font-size:12px;color:var(--ink2);width:100%;text-align:left}
+.doc-i b{font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.doc-i em{font-style:normal;font-family:var(--m);font-size:10px;color:var(--ink3);flex:none;
+  font-variant-numeric:tabular-nums}
+.doc-i:hover{background:var(--panel2);color:var(--ink)}
+.doc-i.on{background:var(--panel2);color:var(--ink)}
+.doc-i.on b{font-weight:600}
+.rail-foot{margin-top:auto;padding:10px 8px 0;border-top:1px solid var(--line);
+  font-family:var(--m);font-size:10px;color:var(--ink3);line-height:1.8;font-variant-numeric:tabular-nums}
+
+.stage{min-width:0}
+.screen{padding:22px 24px 30px;display:flex;flex-direction:column}
+
+.shead{display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap;margin-bottom:4px}
+.shead .eyebrow{font-family:var(--m);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3)}
+.shead h2{font-size:19px;font-weight:600;margin-top:4px;letter-spacing:-.025em}
+.shead .desc{font-size:12.5px;color:var(--ink3);margin-top:4px}
+.shead .right{margin-left:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.srule{height:1px;background:var(--line);margin:16px 0 20px}
+
+/* 공통 조각 */
+.btn{display:inline-flex;align-items:center;gap:7px;background:var(--ac);color:var(--btn-ink);
+  padding:9px 18px;border-radius:4px;font-size:13px;font-weight:700;white-space:nowrap}
+.btn:hover{background:var(--ac-hover)}
+.btn:disabled{opacity:.38;cursor:not-allowed}
+.btn.ghost{background:none;border:1px solid var(--line2);color:var(--ink2);font-weight:500}
+.btn.ghost:hover{border-color:var(--line3);color:var(--ink);background:var(--panel2)}
+.btn.sm{padding:6px 12px;font-size:12px}
+.btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.chip{display:inline-flex;align-items:center;gap:5px;font-family:var(--m);font-size:9.5px;letter-spacing:.08em;
+  padding:3px 8px;border-radius:3px;background:var(--panel2);color:var(--ink2);border:1px solid var(--line)}
+.chip.ac{background:var(--ac-soft);color:var(--ac2);border-color:var(--ac-line)}
+.chip.ok{background:var(--ok-soft);color:var(--ok-ink);border-color:var(--ok-line)}
+.chip.bad{background:var(--bad-soft);color:var(--bad-ink);border-color:var(--bad-line)}
+.chip.warn{background:var(--warn-soft);color:var(--warn-ink);border-color:var(--warn-line)}
+.bar{height:3px;background:var(--line);border-radius:2px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--ac);transition:width .45s ease}
+.bar.ok i{background:var(--ok)}
+.bar.bad i{background:var(--bad)}
+.bar.warn i{background:var(--warn)}
+.bar.lg{height:6px}
+
+/* 세그먼트 버튼 */
+.segs{display:flex;gap:4px;flex-wrap:wrap}
+.segs button{font-size:11.5px;padding:4px 10px;border-radius:3px;border:1px solid var(--line);color:var(--ink3)}
+.segs button:hover{color:var(--ink);border-color:var(--line2)}
+.segs button.on{border-color:var(--ac-line);background:var(--ac-soft);color:var(--ac2);font-weight:600}
+
+/* ───── ① 자료 넣기 ───── */
+.up-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:20px;align-items:start}
+.drop{border:1.5px dashed var(--line2);border-radius:6px;background:var(--panel);
+  padding:34px 26px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
+.drop svg{width:30px;height:30px;stroke:var(--ink3);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.drop h3{font-size:15px;font-weight:600}
+.drop p{font-size:12.5px;color:var(--ink3);max-width:38ch}
+.drop .types{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-top:2px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-family:var(--m);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.field .inp{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:9px 11px;
+  font-size:13px;color:var(--ink);width:100%;font-family:inherit}
+.field .inp::placeholder{color:var(--ink3)}
+.field .inp:focus{border-color:var(--ac-line);outline:none}
+select.inp{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--ink3) 50%),linear-gradient(135deg,var(--ink3) 50%,transparent 50%);
+  background-position:calc(100% - 15px) 17px,calc(100% - 10px) 17px;background-size:5px 5px,5px 5px;background-repeat:no-repeat}
+.queue{display:flex;flex-direction:column;gap:8px}
+.qrow{padding:12px 14px;background:var(--panel);border:1px solid var(--line);border-radius:5px;
+  display:flex;flex-direction:column;gap:8px}
+.qrow-top{display:flex;align-items:center;gap:10px}
+.qrow-top b{font-size:12.5px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.qrow-top .sz{font-family:var(--m);font-size:10px;color:var(--ink3);flex:none}
+.qrow-top .st{margin-left:auto;font-family:var(--m);font-size:10px;color:var(--ink2);flex:none}
+.qrow-top .st.done{color:var(--ok)}
+.steps{display:flex;font-family:var(--m);font-size:9.5px;color:var(--ink3);letter-spacing:.04em}
+.steps span{flex:1;padding-top:7px;border-top:2px solid var(--line);transition:color .3s ease,border-color .3s ease}
+.steps span.done{color:var(--ok);border-top-color:var(--ok)}
+.steps span.doing{color:var(--ac2);border-top-color:var(--ac)}
+
+/* ───── ② 정리본 ───── */
+.sum-grid{display:grid;grid-template-columns:158px minmax(0,1.35fr) minmax(0,1fr);gap:18px;align-items:start}
+.toc{display:flex;flex-direction:column;gap:1px}
+.toc .th{font-family:var(--m);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:7px}
+.toc button{display:flex;justify-content:space-between;gap:8px;padding:6px 8px;border-radius:3px;
+  font-size:12px;color:var(--ink2);text-align:left;width:100%}
+.toc button:hover{background:var(--panel2);color:var(--ink)}
+.toc button em{font-style:normal;font-family:var(--m);font-size:10px;color:var(--ink3)}
+.clist{display:flex;flex-direction:column;gap:9px}
+.citem{padding:14px 15px;background:var(--panel);border:1px solid var(--line);border-radius:5px;
+  text-align:left;width:100%;display:flex;flex-direction:column;gap:6px;transition:border-color .15s ease}
+.citem:hover{border-color:var(--line2);background:var(--panel2)}
+.citem.on{border-color:var(--ac-line);background:var(--ac-soft)}
+.citem.flash{animation:flash 1.5s ease}
+@keyframes flash{0%,45%{border-color:var(--ac);box-shadow:0 0 0 3px var(--flash)}100%{box-shadow:none}}
+.citem-h{display:flex;align-items:baseline;gap:9px}
+.citem-h b{font-size:13.5px;font-weight:600}
+.citem-h .p{font-family:var(--m);font-size:10px;color:var(--ac);margin-left:auto;flex:none}
+.citem p{font-size:12.5px;color:var(--ink2);line-height:1.7}
+.aside{display:flex;flex-direction:column;gap:14px}
+.abox{padding:14px 15px;background:var(--panel);border:1px solid var(--line);border-radius:5px}
+.abox .ah{font-family:var(--m);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);
+  margin-bottom:9px;display:block}
+.abox p{font-size:12.5px;color:var(--ink2);line-height:1.75}
+.excerpt{font-size:12.5px;color:var(--ink2);line-height:1.85;border-left:2px solid var(--ac);padding-left:12px}
+.excerpt cite{display:block;font-family:var(--m);font-size:10px;color:var(--ink3);font-style:normal;margin-top:8px}
+.kw{display:flex;flex-wrap:wrap;gap:5px}
+
+/* ───── ③ 과목 서랍 ───── */
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:18px}
+.stat{padding:13px 15px;background:var(--panel);border:1px solid var(--line);border-radius:5px}
+.stat .k{font-family:var(--m);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)}
+.stat .v{font-family:var(--m);font-size:22px;font-weight:500;margin-top:5px;font-variant-numeric:tabular-nums;
+  letter-spacing:-.02em}
+.stat .v small{font-size:12px;color:var(--ink3);margin-left:3px}
+.dtable{display:flex;flex-direction:column;gap:8px}
+.drow{display:grid;grid-template-columns:minmax(0,1.6fr) 84px 84px 96px minmax(0,1fr);gap:14px;align-items:center;
+  padding:13px 16px;background:var(--panel);border:1px solid var(--line);border-radius:5px;text-align:left;width:100%}
+.drow:hover{border-color:var(--line2);background:var(--panel2)}
+.drow .nm{display:flex;flex-direction:column;gap:3px;min-width:0}
+.drow .nm b{font-size:13px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.drow .nm span{font-family:var(--m);font-size:10px;color:var(--ink3)}
+.drow .cell{display:flex;flex-direction:column;gap:3px}
+.drow .cell .k{font-family:var(--m);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
+.drow .cell .v{font-family:var(--m);font-size:13px;font-variant-numeric:tabular-nums}
+.drow .prog{display:flex;flex-direction:column;gap:6px;min-width:0}
+.drow .prog .lg{display:flex;justify-content:space-between;gap:8px;font-family:var(--m);font-size:9.5px;color:var(--ink3)}
+.drow .prog .lg span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dhead{display:grid;grid-template-columns:minmax(0,1.6fr) 84px 84px 96px minmax(0,1fr);gap:14px;
+  padding:0 16px 8px;font-family:var(--m);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)}
+
+/* ───── ④ 문제 풀이 ───── */
+.quiz-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,.85fr);gap:20px;align-items:start}
+.setbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:10px 14px;background:var(--panel);
+  border:1px solid var(--line);border-radius:5px;margin-bottom:16px}
+.setbar .lbl{font-family:var(--m);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.setbar .sep{width:1px;height:16px;background:var(--line);margin:0 4px}
+.qmeta{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}
+.qmeta .l{display:flex;align-items:center;gap:9px;font-family:var(--m);font-size:11.5px;color:var(--ink2);
+  font-variant-numeric:tabular-nums}
+.qmeta .r{font-family:var(--m);font-size:10.5px;color:var(--ink3)}
+.stem{font-size:15.5px;line-height:1.75;font-weight:500;margin:18px 0 16px;letter-spacing:-.01em;text-wrap:pretty}
+
+.opts{display:flex;flex-direction:column;gap:5px}
+.opt{display:flex;gap:10px;align-items:flex-start;padding:11px 13px;background:var(--panel);
+  border:1px solid var(--line);border-radius:4px;font-size:13.5px;color:var(--ink2);text-align:left;width:100%}
+.opt:hover{border-color:var(--line3);background:var(--panel2)}
+.opt .k{font-family:var(--m);font-size:10.5px;color:var(--ink3);border:1px solid var(--line);
+  border-radius:2px;padding:1px 5px;margin-top:1px;flex:none}
+.opt[aria-pressed="true"]{border-color:var(--ac);background:var(--ac-soft);color:var(--ink)}
+.opt[aria-pressed="true"] .k{border-color:var(--ac-line);color:var(--ac2)}
+.opt.right{border-color:var(--ok-line);background:var(--ok-soft);color:var(--ok-ink)}
+.opt.right .k{border-color:var(--ok-line);color:var(--ok)}
+.opt.wrong{border-color:var(--bad-line);background:var(--bad-soft);color:var(--bad-ink)}
+.opt.wrong .k{border-color:var(--bad-line);color:var(--bad)}
+
+.oxwrap{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ox{padding:26px 16px;background:var(--panel);border:1px solid var(--line);border-radius:5px;
+  display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--ink2)}
+.ox .g{font-family:var(--m);font-size:30px;font-weight:500;line-height:1}
+.ox .t{font-size:11.5px;color:var(--ink3)}
+.ox:hover{border-color:var(--line3);background:var(--panel2)}
+.ox[aria-pressed="true"]{border-color:var(--ac);background:var(--ac-soft);color:var(--ac2)}
+.ox.right{border-color:var(--ok-line);background:var(--ok-soft);color:var(--ok-ink)}
+.ox.wrong{border-color:var(--bad-line);background:var(--bad-soft);color:var(--bad-ink)}
+
+.shortwrap{display:flex;flex-direction:column;gap:9px}
+.shortwrap input{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:13px 15px;
+  font-size:15px;color:var(--ink);font-family:inherit;width:100%}
+.shortwrap input:focus{border-color:var(--ac-line);outline:none}
+.shortwrap input.right{border-color:var(--ok-line);background:var(--ok-soft)}
+.shortwrap input.wrong{border-color:var(--bad-line);background:var(--bad-soft)}
+.shortwrap .tip{font-size:11.5px;color:var(--ink3)}
+
+.essaywrap{display:flex;flex-direction:column;gap:9px}
+.essaywrap textarea{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:13px 15px;
+  font-size:13.5px;line-height:1.8;color:var(--ink);font-family:inherit;width:100%;min-height:132px;resize:vertical}
+.essaywrap textarea:focus{border-color:var(--ac-line);outline:none}
+.essaywrap .tip{font-size:11.5px;color:var(--ink3);display:flex;justify-content:space-between;gap:10px}
+
+.keys{margin-top:13px;font-family:var(--m);font-size:10px;color:var(--ink3);letter-spacing:.04em;
+  display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+.keys kbd{background:var(--panel2);border:1px solid var(--line);border-radius:2px;padding:1px 5px;
+  color:var(--ink2);font:inherit}
+.qactions{display:flex;gap:9px;align-items:center;margin-top:16px;flex-wrap:wrap}
+
+.verdict{margin-top:18px;padding:15px 16px;border:1px solid var(--line);border-left:2px solid var(--ok);
+  border-radius:4px;background:var(--panel);display:flex;flex-direction:column;gap:10px}
+.verdict.bad{border-left-color:var(--bad)}
+.verdict.neutral{border-left-color:var(--warn)}
+.verdict .vh{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.verdict .vt{font-family:var(--m);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ok-ink)}
+.verdict.bad .vt{color:var(--bad-ink)}
+.verdict.neutral .vt{color:var(--warn-ink)}
+.verdict .why{font-size:13px;line-height:1.8;color:var(--ink2);text-wrap:pretty}
+.rubric{display:flex;flex-direction:column;gap:7px}
+.rubric li{display:flex;gap:9px;align-items:flex-start;font-size:12.5px;color:var(--ink2);line-height:1.65}
+.rubric li svg{width:14px;height:14px;flex:none;margin-top:3px;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.rubric li.y svg{stroke:var(--ok)}
+.rubric li.n svg{stroke:var(--bad)}
+.model{font-size:12.5px;line-height:1.85;color:var(--ink2);background:var(--panel2);border-radius:4px;padding:12px 14px}
+.model b{color:var(--ink)}
+.disclaim{font-size:11px;color:var(--ink3)}
+.srclink{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--ac);font-weight:600;
+  align-self:flex-start}
+.srclink:hover{color:var(--ac2)}
+.srclink svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+.refpanel{display:flex;flex-direction:column;gap:10px}
+.refpanel .rh{display:flex;align-items:center;gap:8px}
+.refpanel .rh .ah{font-family:var(--m);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.refpanel .rh .doc{font-size:12px;font-weight:600;color:var(--ink2);margin-left:auto;overflow:hidden;
+  text-overflow:ellipsis;white-space:nowrap}
+.mini{padding:11px 12px;background:var(--panel);border:1px solid var(--line);border-radius:4px}
+.mini.on{border-color:var(--ac-line);background:var(--ac-soft)}
+.mini .mh{display:flex;align-items:baseline;gap:8px;margin-bottom:4px}
+.mini .mh b{font-size:12px;font-weight:600}
+.mini .mh .p{font-family:var(--m);font-size:9.5px;color:var(--ac);margin-left:auto}
+.mini p{font-size:11.5px;line-height:1.7;color:var(--ink3)}
+
+/* ───── ⑤ 정답 & 해설 ───── */
+.rsum{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:16px}
+.rtools{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.rlist{display:flex;flex-direction:column;gap:8px}
+.ritem{background:var(--panel);border:1px solid var(--line);border-radius:5px;overflow:hidden}
+.ritem.wrong{border-left:2px solid var(--bad)}
+.ritem.right{border-left:2px solid var(--ok)}
+.ritem.part{border-left:2px solid var(--warn)}
+.rtop{display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:13px;align-items:center;
+  padding:12px 15px;width:100%;text-align:left}
+.rtop:hover{background:var(--panel2)}
+.rtop .no{font-family:var(--m);font-size:12px;color:var(--ink3);font-variant-numeric:tabular-nums}
+.rtop .q{display:flex;flex-direction:column;gap:4px;min-width:0}
+.rtop .q b{font-size:13px;font-weight:500;line-height:1.55;text-wrap:pretty}
+.rtop .q .ans{font-family:var(--m);font-size:10.5px;color:var(--ink3);display:flex;gap:10px;flex-wrap:wrap}
+.rtop .q .ans .mine.no{color:var(--bad)}
+.rtop .q .ans .mine.yes{color:var(--ok)}
+.rtop .q .ans .real{color:var(--ok)}
+.rtop .rr{display:flex;align-items:center;gap:9px;flex:none}
+.rtop .caret{width:13px;height:13px;stroke:var(--ink3);fill:none;stroke-width:2;stroke-linecap:round;
+  stroke-linejoin:round;transition:transform .2s ease}
+.ritem.open .caret{transform:rotate(180deg)}
+.rbody{padding:14px 15px 16px 58px;display:flex;flex-direction:column;gap:11px;border-top:1px solid var(--line)}
+
+/* ───── ⑥ 오답 노트 ───── */
+.wfil{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.wlist{display:flex;flex-direction:column;gap:8px}
+.witem{display:grid;grid-template-columns:34px minmax(0,1fr) auto;align-items:start;
+  background:var(--panel);border:1px solid var(--line);border-radius:5px}
+.witem:hover{border-color:var(--line2)}
+.witem.sel{border-color:var(--ac-line);background:var(--ac-soft)}
+.wcheck{padding:14px 0 14px 14px;display:flex;align-items:flex-start;justify-content:center}
+.box{width:16px;height:16px;border:1.5px solid var(--line2);border-radius:3px;margin-top:2px;
+  display:flex;align-items:center;justify-content:center;flex:none;background:var(--panel)}
+.witem.sel .box{border-color:var(--ac);background:var(--ac)}
+.box svg{width:10px;height:10px;stroke:var(--btn-ink);fill:none;stroke-width:3;stroke-linecap:round;
+  stroke-linejoin:round;opacity:0}
+.witem.sel .box svg{opacity:1}
+.wopen{padding:13px 14px 13px 12px;display:flex;flex-direction:column;gap:7px;min-width:0;text-align:left}
+.wopen b{font-size:13px;font-weight:500;line-height:1.6;text-wrap:pretty}
+.wopen .tags{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.wside{padding:14px 15px 14px 8px;display:flex;flex-direction:column;align-items:flex-end;gap:5px;
+  flex:none;font-family:var(--m);font-size:10px;color:var(--ink3);font-variant-numeric:tabular-nums}
+.wside .cnt{color:var(--bad);font-size:12px}
+.wside .caret{width:13px;height:13px;stroke:var(--ink3);fill:none;stroke-width:2;stroke-linecap:round;
+  stroke-linejoin:round;transition:transform .2s ease;margin-top:2px}
+.witem.open .caret{transform:rotate(180deg)}
+.wbody{grid-column:1/-1;padding:14px 16px 16px 46px;display:flex;flex-direction:column;gap:10px;
+  border-top:1px solid var(--line)}
+.answerline{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--m);font-size:11px}
+.answerline .mine{color:var(--bad)}
+.answerline .real{color:var(--ok)}
+.wbar{margin-top:16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  padding:12px 15px;background:var(--panel2);border:1px solid var(--line);border-radius:5px}
+.wbar .cn{font-family:var(--m);font-size:12px;color:var(--ink2);font-variant-numeric:tabular-nums}
+.wbar .cn b{color:var(--ac2)}
+
+/* ───── 전체 정리본 ───── */
+.full-grid{display:grid;grid-template-columns:minmax(0,1fr) 268px;gap:24px;align-items:start}
+.fbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:11px 15px;background:var(--panel);
+  border:1px solid var(--line);border-radius:5px;margin-bottom:22px}
+.fbar .fstat{font-family:var(--m);font-size:11px;color:var(--ink3);font-variant-numeric:tabular-nums}
+.fbar .fstat b{color:var(--ink);font-weight:500}
+.fbar .lbl{font-family:var(--m);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.fsec{margin-bottom:28px}
+.fsec:last-child{margin-bottom:0}
+.fsec-h{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding-bottom:8px;
+  border-bottom:1px solid var(--line);margin-bottom:13px}
+.fsec-h h3{font-size:15px;font-weight:700}
+.fsec-h .src{margin-left:auto;font-family:var(--m);font-size:10px;color:var(--ink3)}
+.flines{display:flex;flex-direction:column;gap:11px}
+.fline{display:grid;grid-template-columns:3px minmax(0,1fr);gap:15px;align-items:stretch}
+.fline .mk{border-radius:2px;background:var(--line)}
+.fline .bd{display:flex;flex-direction:column;gap:7px;min-width:0;padding:1px 0}
+.fline .ft{text-wrap:pretty;margin:0}
+.fline.w3 .mk{background:var(--ac)}
+.fline.w3 .ft{font-size:15px;line-height:1.75;color:var(--ink);font-weight:600;letter-spacing:-.01em}
+.fline.w2 .mk{background:var(--line2)}
+.fline.w2 .ft{font-size:13.5px;line-height:1.8;color:var(--ink2)}
+.fline.w1 .mk{background:transparent}
+.fline.w1 .ft{font-size:12.5px;line-height:1.75;color:var(--ink3)}
+.fline .fn{font-size:12px;line-height:1.7;color:var(--warn-ink);background:var(--warn-soft);
+  border:1px solid var(--warn-line);border-radius:4px;padding:7px 11px;margin:0}
+.fline .tags{display:flex;gap:6px;flex-wrap:wrap}
+.fcut{display:flex;align-items:center;gap:9px;padding:8px 12px;border:1px dashed var(--line);
+  border-radius:4px;font-family:var(--m);font-size:10.5px;color:var(--ink3);margin-top:3px}
+.fcut button{font-family:var(--f);font-size:11.5px;color:var(--ac);font-weight:600;margin-left:auto}
+.fcut button:hover{color:var(--ac2)}
+.srcdoc{display:flex;justify-content:space-between;gap:10px;align-items:baseline;
+  padding:7px 0;border-bottom:1px solid var(--line);font-size:12.5px;color:var(--ink2)}
+.srcdoc:last-child{border-bottom:0}
+.srcdoc em{font-style:normal;font-family:var(--m);font-size:10px;color:var(--ink3);flex:none}
+
+/* ───── ⑦ 취약점 ───── */
+.weak-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:20px;align-items:start}
+.diag{padding:15px 17px;background:var(--panel);border:1px solid var(--line);border-left:2px solid var(--ac);
+  border-radius:5px;margin-bottom:18px}
+.diag .dh{font-family:var(--m);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink3);margin-bottom:7px;display:block}
+.diag p{font-size:13.5px;line-height:1.75;color:var(--ink);text-wrap:pretty}
+.wkitem{padding:15px 16px;background:var(--panel);border:1px solid var(--line);border-radius:5px;
+  display:flex;flex-direction:column;gap:9px}
+.wklist{display:flex;flex-direction:column;gap:9px}
+.wkhead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.wkhead .rank{font-family:var(--m);font-size:11px;color:var(--ink3);font-variant-numeric:tabular-nums}
+.wkhead b{font-size:14px;font-weight:600}
+.wkhead .p{font-family:var(--m);font-size:10px;color:var(--ac)}
+.wkhead .acc{margin-left:auto;font-family:var(--m);font-size:13px;font-variant-numeric:tabular-nums}
+.wkhead .acc.lo{color:var(--bad)}
+.wkhead .acc.mid{color:var(--warn)}
+.wkreason{font-size:12.5px;line-height:1.8;color:var(--ink2);text-wrap:pretty}
+.wkfoot{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-family:var(--m);font-size:10px;color:var(--ink3)}
+.tacc{display:flex;flex-direction:column;gap:12px}
+.taccrow{display:flex;flex-direction:column;gap:5px}
+.taccrow .tl{display:flex;justify-content:space-between;gap:10px;font-size:12px;color:var(--ink2)}
+.taccrow .tl .n{font-family:var(--m);font-variant-numeric:tabular-nums;color:var(--ink)}
+.plan{display:flex;flex-direction:column;gap:8px}
+.planrow{display:flex;gap:10px;align-items:flex-start;font-size:12.5px;color:var(--ink2);line-height:1.7}
+.planrow .num{font-family:var(--m);font-size:10px;color:var(--ac);border:1px solid var(--ac-line);
+  background:var(--ac-soft);border-radius:3px;padding:0 5px;line-height:17px;flex:none;margin-top:2px}
+
+/* ══════════ 앱 반응형 ══════════ */
+@container (max-width:1060px){
+  .sum-grid{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}
+  .toc{display:none}
+  .drow,.dhead{grid-template-columns:minmax(0,1.4fr) 74px 84px minmax(0,1fr)}
+  .drow .cell.hide,.dhead .hide{display:none}
+  .stats,.rsum{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .weak-grid,.full-grid{grid-template-columns:1fr}
+}
+@container (max-width:860px){
+  .appbody{grid-template-columns:1fr}
+  .rail{flex-direction:row;flex-wrap:wrap;align-items:center;border-right:0;border-bottom:1px solid var(--line)}
+  .rail-h{flex:1 0 100%;margin:0;padding:0}
+  .rail-div{flex:1 0 100%;margin:8px 0 5px}
+  .rail-foot{flex:1 0 100%;margin-top:8px}
+  .nav,.doc-i{width:auto}
+  .up-grid,.quiz-grid,.sum-grid{grid-template-columns:1fr}
+  .drow,.dhead{grid-template-columns:minmax(0,1fr) 74px 84px}
+  .drow .prog,.dhead .prog{display:none}
+}
+@container (max-width:600px){
+  .screen{padding:18px 14px 24px}
+  .fields{grid-template-columns:1fr}
+  .stats,.rsum{grid-template-columns:1fr 1fr}
+  .rbody{padding-left:15px}
+  .wbody{padding-left:16px}
+  .drow{grid-template-columns:1fr;gap:10px}
+  .dhead{display:none}
+  .witem{grid-template-columns:34px minmax(0,1fr)}
+  .wside{grid-column:2;padding:0 14px 13px 12px;align-items:flex-start;flex-direction:row;gap:12px}
+  .topbar{gap:10px 12px}
+  .stabs{order:3;flex:1 0 100%}
+  .topstat{display:none}
+}
+
+/* ══════════ 모바일 시안 ══════════ */
+.msec{margin-top:76px}
+.msec .mh2{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.msec .mh2 .mono{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3)}
+.msec .mh2 .rule{flex:1;height:1px;background:var(--line)}
+.msec h2{font-size:21px;font-weight:600;margin-bottom:8px}
+.msec > p{color:var(--ink2);font-size:13.5px;max-width:58ch;margin-bottom:26px}
+.phones{display:flex;gap:32px;flex-wrap:wrap}
+.phone-w{display:flex;flex-direction:column;gap:10px}
+.phone-w .cap{font-family:var(--m);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
+.phone{width:390px;max-width:100%;height:760px;background:var(--bg);border:1px solid var(--line);
+  border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow-ph)}
+.ptop{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line);
+  background:var(--panel);flex:none}
+.ptop .bk{width:26px;height:26px;display:flex;align-items:center;justify-content:center;flex:none}
+.ptop .bk svg{width:15px;height:15px;stroke:var(--ink2);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ptop .tt{display:flex;flex-direction:column;gap:1px;min-width:0}
+.ptop .tt b{font-size:13px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ptop .tt span{font-family:var(--m);font-size:10px;color:var(--ink3)}
+.ptop .pg{margin-left:auto;font-family:var(--m);font-size:11px;color:var(--ink2);flex:none;
+  font-variant-numeric:tabular-nums}
+.pbody{flex:1;overflow-y:auto;padding:18px 16px 16px;display:flex;flex-direction:column;gap:14px}
+.pbody .stem{font-size:16px;margin:0 0 2px}
+.pbody .opt{padding:14px;font-size:14px;min-height:52px;align-items:center}
+.pbody .opts{gap:8px}
+.pbody .verdict{margin-top:0}
+.pfoot{flex:none;padding:12px 16px 16px;border-top:1px solid var(--line);background:var(--panel);
+  display:flex;gap:10px;align-items:center}
+.pfoot .btn{flex:1;justify-content:center;min-height:48px}
+.pfoot .ic{width:48px;min-height:48px;border:1px solid var(--line2);border-radius:4px;display:flex;
+  align-items:center;justify-content:center;flex:none}
+.pfoot .ic svg{width:17px;height:17px;stroke:var(--ink2);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.pscore{display:flex;align-items:baseline;gap:10px;padding:14px 15px;background:var(--panel);
+  border:1px solid var(--line);border-radius:5px}
+.pscore .big{font-family:var(--m);font-size:28px;font-weight:500;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.pscore .big small{font-size:13px;color:var(--ink3)}
+.pscore .sm{font-family:var(--m);font-size:11px;color:var(--ink3);line-height:1.6}
+@media (max-width:880px){ .phones{gap:22px} .phone{height:680px} }
+
+/* ───── 마무리 노트 ───── */
+.notes{margin-top:76px;border-top:1px solid var(--line);padding-top:30px;
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+@media (max-width:820px){ .notes{grid-template-columns:1fr;gap:22px} }
+.notes .mono{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);display:block;margin-bottom:9px}
+.notes h4{font-size:14.5px;font-weight:600;margin-bottom:7px}
+.notes p,.notes li{font-size:13px;color:var(--ink2);line-height:1.75}
+.notes ul{padding-left:17px;list-style:disc}
+.notes li{margin-bottom:3px}
+
+@media (prefers-reduced-motion:reduce){ *{transition:none!important;animation:none!important} }
+</style>
+
+<div class="page">
+
+<header class="phead">
+  <span class="kicker">Direction B · 집중 콘솔 · 2026.09.11</span>
+  <h1>시험대비집중노트</h1>
+  <p>자료를 넣으면 핵심을 정리해 주고, 그 자료에서만 문제를 내고, 정답과 해설을 자료의 원래 위치까지 연결해 주는 학습 도구입니다. 아래는 실제로 눌러볼 수 있는 시안이라, 왼쪽 메뉴로 일곱 화면을 오가며 자료 처리부터 과목 전체 정리본, 채점·오답 정리, 취약점 분석까지 한 바퀴 돌아볼 수 있습니다.</p>
+  <div class="hint">
+    <span>숫자 키</span><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd><kbd>4</kbd><kbd>5</kbd><kbd>6</kbd><kbd>7</kbd>
+    <span>화면 이동 (객관식 문항을 푸는 중에는 선택지 선택) · 상단 탭으로 과목 전환 · 오른쪽 위 버튼으로 라이트/다크 전환</span>
+  </div>
+</header>
+
+<!-- ══════════ 앱 ══════════ -->
+<div class="app">
+  <header class="topbar">
+    <div class="brand"><i></i>시험대비집중노트</div>
+    <nav class="stabs" aria-label="과목">
+      <button type="button" class="stab on" data-sub="econ">경제학원론</button>
+      <button type="button" class="stab" data-sub="world">세계사</button>
+      <button type="button" class="stab" data-sub="stat">통계학</button>
+    </nav>
+    <div class="topstat">오늘 42문항 · 정답률 78% · 연속 6일</div>
+    <button type="button" class="tbtn" data-theme-btn aria-label="테마 전환"></button>
+  </header>
+
+  <div class="appbody">
+    <nav class="rail" aria-label="화면">
+      <span class="rail-h">메뉴</span>
+      <button type="button" class="nav" data-go="upload">
+        <svg viewBox="0 0 24 24"><path d="M12 15V3m0 0L8 7m4-4 4 4"/><path d="M3 15v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4"/></svg>
+        자료 넣기<em>1</em>
+      </button>
+      <button type="button" class="nav" data-go="summary">
+        <svg viewBox="0 0 24 24"><path d="M5 3h9l5 5v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M14 3v5h5M8 13h8M8 17h5"/></svg>
+        자료별 정리<em>2</em>
+      </button>
+      <button type="button" class="nav" data-go="full">
+        <svg viewBox="0 0 24 24"><path d="M4 4h13a3 3 0 0 1 3 3v13"/><path d="M4 4v14a2 2 0 0 0 2 2h14"/><path d="M8 9h7M8 13h5"/></svg>
+        전체 정리본<em>3</em>
+      </button>
+      <button type="button" class="nav" data-go="drawer">
+        <svg viewBox="0 0 24 24"><path d="M3 7h18v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z"/><path d="m3 7 2-3h14l2 3M9 12h6"/></svg>
+        과목 서랍<em>4</em>
+      </button>
+      <button type="button" class="nav on" data-go="quiz">
+        <svg viewBox="0 0 24 24"><path d="M4 5h16M4 12h10M4 19h7"/><path d="m16 17.5 2 2 4-4"/></svg>
+        문제 풀이<em>5</em>
+      </button>
+      <button type="button" class="nav" data-go="wrong">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg>
+        오답 노트<em>6</em><span class="badge" data-wrongcount>0</span>
+      </button>
+      <button type="button" class="nav" data-go="weak">
+        <svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M6 20v-6M11 20V9M16 20v-4M21 20V5"/></svg>
+        취약점 분석<em>7</em>
+      </button>
+
+      <div class="rail-div"></div>
+      <span class="rail-h">이 과목 자료</span>
+      <div data-raildocs style="display:contents"></div>
+
+      <div class="rail-foot" data-railfoot></div>
+    </nav>
+
+    <main class="stage">
+
+      <!-- ① 자료 넣기 -->
+      <section class="screen" data-screen="upload" hidden>
+        <div class="shead">
+          <div>
+            <span class="eyebrow">화면 01</span>
+            <h2>자료 넣기</h2>
+            <p class="desc">넣은 자료에서만 문제를 냅니다. 범위 밖의 내용은 출제하지 않습니다.</p>
+          </div>
+          <div class="right"><span class="chip">이번 주 6건 처리</span></div>
+        </div>
+        <div class="srule"></div>
+
+        <div class="up-grid">
+          <div>
+            <div class="drop">
+              <svg viewBox="0 0 24 24"><path d="M12 16V4m0 0L7 9m5-5 5 5"/><path d="M3 16v3a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-3"/></svg>
+              <h3>파일을 끌어다 놓거나 눌러서 선택하세요</h3>
+              <p>필기 사진은 글자를 읽어 텍스트로 바꾼 뒤 정리합니다. 손글씨가 흐리면 인식률이 떨어질 수 있습니다.</p>
+              <div class="types">
+                <span class="chip">PDF</span><span class="chip">JPG · PNG</span>
+                <span class="chip">DOCX</span><span class="chip">텍스트 붙여넣기</span>
+              </div>
+            </div>
+            <div class="fields">
+              <div class="field">
+                <label for="f-sub">과목</label>
+                <select class="inp" id="f-sub">
+                  <option>경제학원론</option><option>세계사</option><option>통계학</option><option>+ 새 과목 만들기</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="f-unit">단원 · 범위</label>
+                <input class="inp" id="f-unit" value="3장 수요와 공급">
+              </div>
+              <div class="field">
+                <label for="f-depth">정리 깊이</label>
+                <select class="inp" id="f-depth">
+                  <option>보통 — 핵심 개념 위주</option><option>얕게 — 목차와 키워드만</option><option>깊게 — 예시·사례까지</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="f-lang">용어 표기</label>
+                <select class="inp" id="f-lang">
+                  <option>한국어 + 원어 병기</option><option>한국어만</option>
+                </select>
+              </div>
+            </div>
+            <div class="qactions">
+              <button type="button" class="btn" data-startproc>자료 처리 시작</button>
+              <span class="chip">평균 40초 소요</span>
+            </div>
+          </div>
+
+          <div>
+            <span class="rail-h" style="padding:0;display:block;margin-bottom:10px">처리 대기열</span>
+            <div class="queue" data-queue></div>
+            <div class="qactions" data-procdone hidden>
+              <button type="button" class="btn" data-go="summary">정리본 보기</button>
+              <button type="button" class="btn ghost" data-go="quiz">바로 문제 풀기</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ② 정리본 -->
+      <section class="screen" data-screen="summary" hidden>
+        <div class="shead">
+          <div>
+            <span class="eyebrow">화면 02 · 자료 하나</span>
+            <h2 data-sumdoc></h2>
+            <p class="desc"><span data-sumpages></span>쪽에서 개념 <span data-sumcount></span>개 추출 · 원문 쪽수를 함께 보관합니다.</p>
+          </div>
+          <div class="right">
+            <button type="button" class="btn ghost sm" data-go="full">과목 전체 정리본 열기</button>
+            <button type="button" class="btn ghost sm" data-go="quiz">이 자료로 문제 만들기</button>
+          </div>
+        </div>
+        <div class="srule"></div>
+
+        <div class="sum-grid">
+          <nav class="toc"><span class="th">목차</span><div data-toc></div></nav>
+          <div class="clist" data-clist></div>
+          <aside class="aside">
+            <div class="abox"><span class="ah">원문 발췌</span><div class="excerpt" data-excerpt></div></div>
+            <div class="abox"><span class="ah">키워드</span><div class="kw" data-kw></div></div>
+            <div class="abox"><span class="ah">한 줄 요약</span><p data-oneline></p></div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ③ 전체 정리본 -->
+      <section class="screen" data-screen="full" hidden>
+        <div class="shead">
+          <div>
+            <span class="eyebrow">화면 03 · 과목 전체</span>
+            <h2><span data-fullsub></span> 전체 정리본</h2>
+            <p class="desc">이 과목의 자료를 전부 합쳐 한 편으로 만들었습니다. <b>버리는 내용은 없습니다</b> — 중요한 줄을 앞세우고 나머지는 접어 둘 뿐입니다.</p>
+          </div>
+          <div class="right">
+            <button type="button" class="btn ghost sm" data-go="quiz">이 정리본으로 문제 만들기</button>
+          </div>
+        </div>
+        <div class="srule"></div>
+
+        <div class="fbar">
+          <span class="lbl">밀도</span>
+          <div class="segs" data-density>
+            <button type="button" data-d="3">핵심만</button>
+            <button type="button" data-d="2">보통</button>
+            <button type="button" class="on" data-d="1">빠짐없이</button>
+          </div>
+          <span class="fstat" data-fullstat></span>
+          <span class="chip" style="margin-left:auto" data-fullupdated></span>
+        </div>
+
+        <div class="full-grid">
+          <div data-fullbody></div>
+          <aside class="aside">
+            <div class="abox">
+              <span class="ah">원문 커버리지</span>
+              <div data-fullsrc></div>
+            </div>
+            <div class="abox">
+              <span class="ah">시험 범위</span>
+              <p data-fullscope></p>
+            </div>
+            <div class="abox">
+              <span class="ah">읽는 법</span>
+              <p style="font-size:12px">파란 줄은 <b style="color:var(--ink)">반드시 아는 문장</b>, 회색 줄은 보조 설명입니다. 노란 칸은 이 문장에서 실제로 틀렸던 지점입니다. 밀도는 <b style="color:var(--ink)">지금 보여줄 양</b>만 정하고, 정리본이 담고 있는 내용은 그대로입니다.</p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ③ 과목 서랍 -->
+      <section class="screen" data-screen="drawer" hidden>
+        <div class="shead">
+          <div>
+            <span class="eyebrow">화면 04</span>
+            <h2 data-drawname></h2>
+            <p class="desc">자료별 회독 수와 마지막으로 본 위치를 기억합니다.</p>
+          </div>
+          <div class="right"><button type="button" class="btn ghost sm" data-go="upload">자료 추가</button></div>
+        </div>
+        <div class="srule"></div>
+        <div class="stats" data-drawstats></div>
+        <div class="dhead">
+          <span>자료</span><span>회독</span><span class="hide">오답</span><span>정답률</span><span class="prog">진도 · 마지막 위치</span>
+        </div>
+        <div class="dtable" data-drawtable></div>
+      </section>
+
+      <!-- ④ 문제 풀이 -->
+      <section class="screen" data-screen="quiz">
+        <div class="shead">
+          <div>
+            <span class="eyebrow">화면 05</span>
+            <h2>문제 풀이</h2>
+            <p class="desc" data-quizdesc></p>
+          </div>
+          <div class="right"><button type="button" class="btn ghost sm" data-restart>세트 다시 시작</button></div>
+        </div>
+        <div class="srule"></div>
+
+        <div class="setbar" data-setnormal>
+          <span class="lbl">문항 유형</span>
+          <div class="segs" data-typefilter>
+            <button type="button" class="on" data-type="choice">객관식</button>
+            <button type="button" class="on" data-type="ox">OX</button>
+            <button type="button" class="on" data-type="short">단답형</button>
+            <button type="button" class="on" data-type="essay">서술형</button>
+          </div>
+          <span class="sep"></span>
+          <span class="lbl">문항 수</span>
+          <div class="segs" data-countfilter>
+            <button type="button" data-n="5">5</button>
+            <button type="button" data-n="10">10</button>
+            <button type="button" class="on" data-n="0">전체</button>
+          </div>
+          <span class="chip ac" data-setcount></span>
+          <span class="sep"></span>
+          <span class="lbl">난이도</span><span class="chip">중</span>
+          <span class="lbl" style="margin-left:6px">범위</span><span class="chip" data-quizscope></span>
+        </div>
+        <div class="setbar" data-setdrill hidden>
+          <span class="lbl">모드</span>
+          <span class="chip ac" data-drilllabel></span>
+          <span class="lbl" style="margin-left:6px">유형 필터는 이 세트에 적용되지 않습니다</span>
+          <button type="button" class="btn ghost sm" data-drillexit style="margin-left:auto">일반 세트로 돌아가기</button>
+        </div>
+
+        <div class="quiz-grid">
+          <div>
+            <div class="qmeta">
+              <span class="l">문항 <span data-qn></span> / <span data-qtotal></span> <span class="chip ac" data-qtype></span><span class="chip" data-qsub hidden></span></span>
+              <span class="r" data-qsrc></span>
+            </div>
+            <div class="bar"><i data-qbar style="width:0%"></i></div>
+
+            <p class="stem" data-stem></p>
+            <div data-answerarea></div>
+            <div class="keys" data-keys></div>
+
+            <div class="qactions">
+              <button type="button" class="btn" data-check disabled>정답 확인</button>
+              <button type="button" class="btn ghost" data-next hidden>다음 문항</button>
+              <button type="button" class="btn ghost" data-skip>모르겠음 · 넘기기</button>
+            </div>
+
+            <div class="verdict" data-verdict hidden></div>
+          </div>
+
+          <aside class="refpanel">
+            <div class="rh"><span class="ah">참고 · 이 자료 정리</span><span class="doc" data-refdoc></span></div>
+            <div data-refminis style="display:flex;flex-direction:column;gap:8px"></div>
+            <button type="button" class="btn ghost sm" data-go="summary" style="justify-content:center">정리본 전체 열기</button>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ⑤ 정답 & 해설 -->
+      <section class="screen" data-screen="result" hidden>
+        <div class="shead">
+          <div>
+            <span class="eyebrow">화면 06</span>
+            <h2>정답 &amp; 해설</h2>
+            <p class="desc">틀린 문항은 해설이 펼쳐진 채로 시작합니다. 근거 링크를 누르면 정리본의 해당 개념으로 바로 이동합니다.</p>
+          </div>
+          <div class="right">
+            <button type="button" class="btn ghost sm" data-restart>같은 세트 다시 풀기</button>
+            <button type="button" class="btn sm" data-go="wrong" data-addwrong>틀린 문항 오답 노트에 담기</button>
+          </div>
+        </div>
+        <div class="srule"></div>
+
+        <div class="rsum" data-rsum></div>
+        <div class="rtools">
+          <span class="lbl" style="font-family:var(--m);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)">보기</span>
+          <div class="segs" data-rfilter>
+            <button type="button" class="on" data-rf="all">전체</button>
+            <button type="button" data-rf="wrong">틀린 것만</button>
+          </div>
+          <span class="chip" data-rtime>소요 11:40</span>
+          <button type="button" class="btn ghost sm" data-rtoggle style="margin-left:auto">모두 펼치기</button>
+        </div>
+        <div class="rlist" data-rlist></div>
+      </section>
+
+      <!-- ⑥ 오답 노트 -->
+      <section class="screen" data-screen="wrong" hidden>
+        <div class="shead">
+          <div>
+            <span class="eyebrow">화면 07</span>
+            <h2>오답 노트</h2>
+            <p class="desc">문항을 누르면 내가 쓴 답과 해설이 함께 펼쳐집니다. 여러 번 틀린 것이 위로 올라옵니다.</p>
+          </div>
+          <div class="right"><button type="button" class="btn ghost sm" data-wexpand>모두 펼치기</button></div>
+        </div>
+        <div class="srule"></div>
+
+        <div class="wfil">
+          <span class="chip ac">전체 과목</span><span class="chip">2회 이상 틀림</span><span class="chip">최근 7일</span>
+          <span class="chip" style="margin-left:auto">정렬 · 틀린 횟수순</span>
+        </div>
+
+        <div class="wlist" data-wlist></div>
+
+        <div class="wbar">
+          <span class="cn"><b data-wsel>0</b>문항 선택됨</span>
+          <button type="button" class="btn sm" data-wstart disabled>선택한 문항 다시 풀기</button>
+          <button type="button" class="btn ghost sm" data-wall>전체 선택</button>
+        </div>
+      </section>
+
+      <!-- ⑦ 취약점 분석 -->
+      <section class="screen" data-screen="weak" hidden>
+        <div class="shead">
+          <div>
+            <span class="eyebrow">화면 08</span>
+            <h2><span data-weaksub></span> · 취약점</h2>
+            <p class="desc">정답률이 낮은 개념을 이유와 함께 보여줍니다. 과목을 바꾸면 분석도 함께 바뀝니다.</p>
+          </div>
+          <div class="right"><button type="button" class="btn sm" data-weakdrill>취약 개념만 다시 풀기</button></div>
+        </div>
+        <div class="srule"></div>
+
+        <div class="diag">
+          <span class="dh">한 줄 진단</span>
+          <p data-weakdiag></p>
+        </div>
+
+        <div class="weak-grid">
+          <div class="wklist" data-weaklist></div>
+
+          <aside class="aside">
+            <div class="abox">
+              <span class="ah">문항 유형별 정답률</span>
+              <div class="tacc" data-typeacc></div>
+            </div>
+            <div class="abox">
+              <span class="ah">추천 순서</span>
+              <div class="plan" data-weakplan></div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<!-- ══════════ 모바일 ══════════ -->
+<section class="msec">
+  <div class="mh2"><span class="mono">Mobile</span><span class="rule"></span></div>
+  <h2>모바일 · 핵심 두 화면</h2>
+  <p>이동 중에 쓰는 화면이라 좌측 레일과 참고 패널을 접고, 문항과 답만 남겼습니다. 버튼은 모두 48px 이상으로 잡았고, 채점은 아래 고정 바에서 한 손으로 누릅니다. 아래 두 프레임은 상태를 고정해 둔 화면이며, 라이트/다크는 위 앱과 함께 바뀝니다.</p>
+  <div class="phones">
+
+    <div class="phone-w">
+      <span class="cap">390 × 844 · 문제 풀이</span>
+      <div class="phone">
+        <div class="ptop">
+          <span class="bk"><svg viewBox="0 0 24 24"><path d="M15 18 9 12l6-6"/></svg></span>
+          <span class="tt"><b>3장 수요와 공급</b><span>경제학원론 · 난이도 중</span></span>
+          <span class="pg">5 / 12</span>
+        </div>
+        <div class="pbody">
+          <div class="bar"><i style="width:42%"></i></div>
+          <div class="qmeta"><span class="l"><span class="chip ac">OX</span></span><span class="r">출처 p.19</span></div>
+          <p class="stem">공급이 늘고 수요가 그대로이면, 시장의 균형가격은 내려간다.</p>
+          <div class="oxwrap">
+            <div class="ox" aria-pressed="true"><span class="g">O</span><span class="t">맞다</span></div>
+            <div class="ox"><span class="g">X</span><span class="t">아니다</span></div>
+          </div>
+          <div class="mini">
+            <div class="mh"><b>시장균형</b><span class="p">p.19</span></div>
+            <p>초과공급이 생기면 가격은 내려가고, 초과수요가 생기면 올라간다.</p>
+          </div>
+        </div>
+        <div class="pfoot">
+          <span class="ic"><svg viewBox="0 0 24 24"><path d="M5 3h9l5 5v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M14 3v5h5"/></svg></span>
+          <span class="btn">정답 확인</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="phone-w">
+      <span class="cap">390 × 844 · 정답 &amp; 해설</span>
+      <div class="phone">
+        <div class="ptop">
+          <span class="bk"><svg viewBox="0 0 24 24"><path d="M15 18 9 12l6-6"/></svg></span>
+          <span class="tt"><b>채점 결과</b><span>3장 수요와 공급 · 12문항</span></span>
+          <span class="pg">12문항</span>
+        </div>
+        <div class="pbody">
+          <div class="pscore">
+            <span class="big">75<small>%</small></span>
+            <span class="sm">12문항 중 9정답<br>소요 11분 40초</span>
+          </div>
+          <div class="verdict bad">
+            <div class="vh"><span class="vt">오답 · 문항 1</span><span class="chip">객관식</span></div>
+            <p class="why" style="font-size:13.5px">탄력적인 재화(ε&gt;1)는 가격이 1% 내릴 때 수요량이 1%보다 많이 늘어납니다. 총수입은 가격 × 수량이므로 수량이 늘어난 폭이 가격이 내린 폭을 넘어서 총수입은 <b>증가</b>합니다.</p>
+          <span class="srclink"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>정리본 p.11 · 가격탄력성</span>
+          </div>
+          <div class="verdict">
+            <div class="vh"><span class="vt">정답 · 문항 2</span><span class="chip">OX</span></div>
+            <p class="why" style="font-size:13.5px">공급이 늘면 같은 가격에서 초과공급이 생기고, 그 압력으로 균형가격이 내려갑니다.</p>
+          </div>
+        </div>
+        <div class="pfoot">
+          <span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg></span>
+          <span class="btn">틀린 3문항 다시 풀기</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ───── 노트 ───── -->
+<section class="notes">
+  <div>
+    <span class="mono">시안에 대해</span>
+    <h4>여기 숫자는 샘플입니다</h4>
+    <p>정답률 78%, 회독 3, 취약점 화면의 개념별 정답률 같은 값은 화면이 실제로 쓰일 때의 모습을 보이려고 넣은 예시 값입니다. 문항과 해설 내용은 실제로 맞는 내용으로 썼습니다.</p>
+  </div>
+  <div>
+    <span class="mono">서술형 채점</span>
+    <h4>기준 대조 방식</h4>
+    <p>서술형은 채점 기준 세 개를 두고 충족 여부와 짧은 피드백을 돌려주는 형태로 잡았습니다. 시안에서는 예시 결과가 고정으로 나옵니다.</p>
+  </div>
+  <div>
+    <span class="mono">다음에 정할 것</span>
+    <h4>남은 결정</h4>
+    <ul>
+      <li>정리본의 중요도를 누가 정할지 — 자동 판정만인지, 직접 올리고 내릴 수 있게 할지</li>
+      <li>자료 업로드 용량·형식 제한</li>
+      <li>여러 자료를 묶어 모의고사로 낼지</li>
+    </ul>
+  </div>
+</section>
+
+</div>
+
+<script>
+(function(){
+'use strict';
+
+/* ══════════ 데이터 ══════════ */
+var DATA = {
+  econ: {
+    label:'경제학원론', rounds:3, acc:78,
+    docs:[
+      {n:'3장 수요와 공급', p:28, c:4, r:3, acc:78, wrong:12, prog:62, last:'p.19 시장균형'},
+      {n:'4장 소비자이론', p:31, c:5, r:1, acc:64, wrong:9, prog:28, last:'p.7 무차별곡선'},
+      {n:'강의노트 0912', p:6, c:2, r:2, acc:88, wrong:2, prog:100, last:'끝까지 봄'}
+    ],
+    doc:'3장 수요와 공급.pdf', pages:28,
+    toc:[['1. 수요곡선','p.3'],['2. 공급곡선','p.7'],['3. 탄력성','p.11'],['4. 시장균형','p.19'],['5. 가격통제','p.24']],
+    kw:['수요량','공급량','탄력성','총수입','초과수요','균형가격'],
+    oneline:'가격이 수요량과 공급량을 어떻게 움직이고, 그 둘이 만나는 지점에서 가격이 어떻게 정해지는지를 다룹니다.',
+    concepts:[
+      {t:'수요의 법칙', p:'p.4', d:'다른 조건이 같을 때, 가격이 오르면 수요량은 줄어든다.',
+       x:'이 법칙은 소득·기대가격·대체재 가격처럼 가격 이외의 조건이 모두 고정되어 있다는 전제 아래에서만 성립한다.'},
+      {t:'공급의 법칙', p:'p.7', d:'다른 조건이 같을 때, 가격이 오르면 공급량은 늘어난다.',
+       x:'생산자는 가격이 높을수록 한 단위를 더 만들 유인이 커지므로, 공급곡선은 오른쪽 위로 향한다.'},
+      {t:'가격탄력성', p:'p.11', d:'가격이 1% 변할 때 수요량이 몇 % 변하는가. 절댓값이 1보다 크면 탄력적이다.',
+       x:'절댓값이 1보다 크면 가격을 내릴 때 수요량이 더 크게 늘어나 총수입이 증가하고, 1보다 작으면 총수입이 감소한다.'},
+      {t:'시장균형', p:'p.19', d:'수요량과 공급량이 일치하는 가격과 수량의 조합.',
+       x:'초과수요가 있으면 가격이 오르고 초과공급이 있으면 내려간다. 이 조정이 멈춘 지점이 균형이다.'}
+    ],
+    quiz:[
+      {type:'choice', src:'p.11', ref:2,
+       stem:'수요의 가격탄력성이 1보다 큰 재화의 가격을 인하했다. 판매자의 총수입은 어떻게 되는가?',
+       opts:['감소한다','증가한다','변하지 않는다','탄력성만으로는 알 수 없다'], answer:1,
+       why:'탄력적인 재화(ε>1)는 가격이 1% 내릴 때 수요량이 1%보다 많이 늘어납니다. 총수입은 가격 × 수량이므로, 수량이 늘어난 폭이 가격이 내린 폭을 넘어서 총수입은 증가합니다. ①은 비탄력적인 재화(ε<1)일 때의 결과와 섞은 경우가 많습니다.'},
+      {type:'ox', src:'p.19', ref:3,
+       stem:'공급이 늘고 수요가 그대로이면, 시장의 균형가격은 내려간다.', answer:true,
+       why:'공급이 늘면 같은 가격에서 초과공급이 생깁니다. 팔리지 않은 물량이 가격을 끌어내리고, 새 균형은 더 낮은 가격·더 많은 수량에서 잡힙니다.'},
+      {type:'short', src:'p.11', ref:2,
+       stem:'가격이 1% 변할 때 수요량이 몇 % 변하는지를 나타내는 값을 무엇이라 하는가?',
+       accept:['가격탄력성','수요의 가격탄력성','수요 가격탄력성','수요탄력성','탄력성'], answer:'가격탄력성 (수요의 가격탄력성)',
+       why:'수요량의 변화율을 가격의 변화율로 나눈 값입니다. 절댓값이 1보다 크면 탄력적, 작으면 비탄력적이라고 부릅니다.'},
+      {type:'essay', src:'p.4', ref:0,
+       stem:'가격이 올랐는데도 수요량이 늘어나는 경우를 하나 들고, 그것이 왜 수요의 법칙과 모순되지 않는지 설명하시오.',
+       answer:'기준 대조',
+       rubric:[
+         {t:'수요의 법칙이 “다른 조건이 같을 때”라는 전제 위에 있음을 밝혔는가', ok:true},
+         {t:'가격 상승과 수요량 증가가 함께 나타나는 사례를 구체적으로 들었는가', ok:true},
+         {t:'그것이 곡선 위의 이동이 아니라 곡선 자체의 이동임을 구분했는가', ok:false}
+       ],
+       fb:'앞의 두 가지는 잘 짚었습니다. 마지막 한 가지 — 사례가 “수요곡선을 따라 움직인 것”인지 “수요곡선 자체가 옮겨간 것”인지를 구분해서 써야 답이 완성됩니다.',
+       model:'수요의 법칙은 소득·기대가격·대체재 가격 같은 다른 조건이 고정되었을 때만 성립한다. 예를 들어 값이 더 오를 것이라는 기대가 퍼지면, 가격이 올랐는데도 수요량이 늘 수 있다. 이는 수요곡선 위를 따라 움직인 결과가 아니라 “기대”라는 조건이 바뀌어 수요곡선 자체가 오른쪽으로 옮겨간 결과이므로, 수요의 법칙과 모순되지 않는다.',
+       why:''},
+      {type:'choice', src:'p.4', ref:0,
+       stem:'수요곡선 자체를 오른쪽으로 이동시키는 요인은 무엇인가?',
+       opts:['그 재화의 가격 하락','대체재의 가격 상승','생산기술의 향상','원자재 가격의 하락'], answer:1,
+       why:'대체재가 비싸지면 이 재화로 수요가 옮겨 와 같은 가격에서도 수요량이 늘어납니다. 즉 수요곡선 자체가 오른쪽으로 이동합니다. ①은 곡선 위를 따라 내려가는 “수요량의 변화”일 뿐이고, ③④는 공급곡선을 움직이는 요인입니다.'},
+      {type:'choice', src:'p.19', ref:3,
+       stem:'공급이 감소하고 수요는 그대로일 때, 새 균형의 가격과 수량은 어떻게 되는가?',
+       opts:['가격 상승 · 수량 증가','가격 상승 · 수량 감소','가격 하락 · 수량 증가','가격 하락 · 수량 감소'], answer:1,
+       why:'공급곡선이 왼쪽으로 이동하면 같은 가격에서 초과수요가 생겨 가격이 올라갑니다. 가격이 오르면 수요량은 곡선을 따라 줄어드므로, 새 균형은 더 높은 가격·더 적은 수량에서 잡힙니다.'},
+      {type:'choice', src:'p.24', ref:2,
+       stem:'어떤 재화에 세금을 매겼을 때, 실제로 세금을 더 많이 부담하게 되는 쪽은?',
+       opts:['법으로 납세의무자가 된 쪽','탄력성이 큰 쪽','탄력성이 작은 쪽','언제나 절반씩 나눠 부담'], answer:2,
+       why:'세금을 누가 내도록 법으로 정했는지와, 실제로 누가 부담하는지는 다릅니다. 탄력성이 작다는 것은 가격이 변해도 행동을 바꾸기 어렵다는 뜻이라, 그쪽이 세금을 더 떠안게 됩니다.'},
+      {type:'ox', src:'p.4', ref:0,
+       stem:'가격이 변해서 수요량이 달라지는 것을 “수요의 변화”라고 부른다.', answer:false,
+       why:'그것은 “수요량의 변화”이고, 수요곡선 위를 따라 움직이는 것입니다. “수요의 변화”는 소득이나 기대처럼 가격 아닌 조건이 바뀌어 곡선 자체가 옮겨가는 경우를 가리킵니다.'},
+      {type:'ox', src:'p.11', ref:2,
+       stem:'대체재가 많은 재화일수록 수요는 더 비탄력적이다.', answer:false,
+       why:'반대입니다. 갈아탈 곳이 많을수록 가격이 조금만 올라도 수요량이 크게 줄어드니 더 탄력적입니다. 대체재가 거의 없는 필수재가 비탄력적인 쪽입니다.'},
+      {type:'ox', src:'p.24', ref:3,
+       stem:'가격하한을 균형가격보다 낮게 정하면 시장에는 사실상 아무 영향이 없다.', answer:true,
+       why:'하한이 균형가격 아래에 있으면 시장은 이미 그보다 높은 가격에서 거래되고 있으므로 규제가 걸리지 않습니다. 가격하한은 균형보다 높게 정할 때만 초과공급을 만들어 냅니다.'},
+      {type:'short', src:'p.19', ref:3,
+       stem:'수요량과 공급량이 일치하여 더 이상 가격이 움직이지 않는 그 가격을 무엇이라 하는가?',
+       accept:['균형가격','균형 가격','시장균형가격','균형','시장가격'], answer:'균형가격',
+       why:'이때의 수량은 균형거래량이라고 부릅니다. 두 곡선이 만나는 점의 좌표가 각각 균형가격과 균형거래량입니다.'},
+      {type:'essay', src:'p.24', ref:3,
+       stem:'가격상한제를 균형가격보다 낮게 정했을 때 시장에서 어떤 일이 벌어지는지 설명하시오.',
+       answer:'기준 대조',
+       rubric:[
+         {t:'상한가격에서 수요량이 공급량을 초과한다는 점(초과수요)을 밝혔는가', ok:true},
+         {t:'가격이 오르지 못해 부족 상태가 해소되지 않음을 설명했는가', ok:true},
+         {t:'가격 대신 줄서기·배급·암시장 같은 비가격 배분이 생긴다는 점까지 썼는가', ok:false}
+       ],
+       fb:'초과수요가 생긴다는 데까지는 정확합니다. 마지막 한 가지 — 가격이 움직이지 못하면 무엇이 대신 물량을 나누는 역할을 하는지까지 쓰면 답이 완성됩니다.',
+       model:'상한가격이 균형가격보다 낮으면 그 가격에서 수요량이 공급량을 웃돌아 초과수요가 생긴다. 평소라면 가격이 올라 이 격차가 사라지지만, 상한 때문에 가격이 오르지 못하므로 부족 상태가 계속된다. 그러면 가격 대신 줄서기, 배급, 판매자의 임의 선택, 암시장 같은 비가격 방식이 물량을 나누게 된다.',
+       why:''}
+    ],
+    typeAcc:{choice:82, ox:90, short:71, essay:58},
+    diag:'개념 자체는 알고 있는데, 방향(증가/감소, 좌/우 이동)을 뒤집는 실수가 오답의 대부분입니다. 새 개념을 더 보기보다 이미 본 개념의 방향을 다시 정리하는 편이 효율적입니다.',
+    weak:[
+      {c:2, acc:52, wrong:5,
+       why:'탄력성이 1보다 클 때와 작을 때의 결과를 서로 바꿔 고른 오답이 4회입니다. 총수입이 어느 쪽으로 움직이는지를 탄력성 값과 묶어서 기억하지 않고 있습니다.'},
+      {c:3, acc:68, wrong:3,
+       why:'수요가 움직인 경우와 공급이 움직인 경우를 구분하는 문항에서만 틀립니다. 어느 곡선이 움직였는지를 먼저 정하지 않고 답을 고르는 패턴이 반복됩니다.'},
+      {c:0, acc:74, wrong:2,
+       why:'객관식은 맞히는데 서술형에서 “다른 조건이 같을 때”라는 전제를 쓰지 않아 기준 하나를 놓쳤습니다. 알고는 있지만 답안에 적지 않는 유형입니다.'}
+    ],
+    plan:['가격탄력성 — 탄력적/비탄력적 두 경우의 총수입 방향을 한 장으로 정리','시장균형 — 수요 이동·공급 이동 4가지 조합을 표로 확인','서술형 2문항으로 전제 문장 쓰는 연습'],
+    full:{
+      updated:'09.11 갱신',
+      scope:'3장 전체 + 4장 무차별곡선까지 (강의 중 언급)',
+      sections:[
+        {t:'1. 수요와 공급의 기본', doc:'3장 수요와 공급', from:1, to:10, lines:[
+          {w:3, t:'수요의 법칙 — 다른 조건이 같을 때 가격이 오르면 수요량은 줄어든다.',
+           n:'“다른 조건이 같을 때”라는 전제가 빠지면 틀린 문장이 됩니다. 서술형에서 이 전제를 안 써서 기준 하나를 놓쳤습니다.'},
+          {w:3, t:'공급의 법칙 — 가격이 오르면 공급량은 늘어난다. 그래서 공급곡선은 오른쪽 위로 향한다.'},
+          {w:2, t:'“수요량의 변화”는 곡선 위를 따라 움직이는 것이고, “수요의 변화”는 곡선 자체가 옮겨가는 것이다. 둘은 다른 말이다.', wrong:3},
+          {w:2, t:'수요를 움직이는 조건은 소득, 대체재·보완재 가격, 기대, 인구. 공급을 움직이는 조건은 생산비, 기술, 생산자 수.'},
+          {w:1, t:'3장 전체는 “시장이 어떻게 가격을 정하는가”라는 질문 하나로 묶여 있다. (p.1–2 학습목표)'},
+          {w:1, t:'세로축에 가격, 가로축에 수량을 두는 것은 마셜 이후 굳어진 관행이다.'}
+        ]},
+        {t:'2. 탄력성', doc:'3장 수요와 공급', from:11, to:18, lines:[
+          {w:3, t:'가격탄력성 = 수요량 변화율 ÷ 가격 변화율. 절댓값이 1보다 크면 탄력적이다.',
+           n:'절댓값 조건을 빼면 수요의 가격탄력성은 음수라 “1보다 크다”가 성립하지 않습니다.'},
+          {w:3, t:'탄력적(ε>1)이면 가격을 내릴 때 총수입이 늘고, 비탄력적(ε<1)이면 총수입이 줄어든다.',
+           n:'가장 많이 틀린 지점입니다. 두 경우의 방향을 서로 바꿔 고르는 오답이 반복됩니다.', wrong:4},
+          {w:2, t:'대체재가 많을수록, 그리고 시간이 길게 주어질수록 수요는 더 탄력적이 된다.'},
+          {w:2, t:'소득탄력성이 양수면 정상재, 음수면 열등재. 교차탄력성이 양수면 대체재, 음수면 보완재다.'},
+          {w:1, t:'단위탄력적(ε=1)일 때는 가격이 변해도 총수입이 그대로다.'},
+          {w:1, t:'공급의 탄력성도 같은 방식으로 정의되며, 생산 여력이 클수록 탄력적이다.'}
+        ]},
+        {t:'3. 시장균형과 가격통제', doc:'3장 수요와 공급', from:19, to:28, lines:[
+          {w:3, t:'균형은 수요량과 공급량이 같아지는 가격과 수량의 조합이다.'},
+          {w:3, t:'초과수요가 있으면 가격이 오르고, 초과공급이 있으면 내려간다. 이 조정이 멈춘 곳이 균형이다.',
+           n:'문제를 풀 때는 “어느 곡선이 움직였는가”부터 정하고 답을 고르세요. 그 단계를 건너뛰어 틀리는 경우가 많습니다.', wrong:3},
+          {w:2, t:'수요 증가 → 가격 상승·수량 증가 / 공급 증가 → 가격 하락·수량 증가. 네 조합은 표로 외워 두는 편이 빠르다.'},
+          {w:2, t:'가격상한제는 균형가격보다 낮게 정할 때만, 가격하한제는 높게 정할 때만 실제로 작동한다.'},
+          {w:1, t:'가격상한은 물량 부족과 암시장을, 가격하한은 초과공급(예: 최저임금 아래에서의 실업)을 부른다.'},
+          {w:1, t:'조세를 누가 더 부담하는지는 법이 아니라 두 곡선의 탄력성이 정한다. 덜 탄력적인 쪽이 더 부담한다.'}
+        ]},
+        {t:'4. 소비자이론 — 효용과 선택', doc:'4장 소비자이론', from:1, to:18, lines:[
+          {w:3, t:'한계효용 체감의 법칙이 우하향하는 수요곡선의 바탕이 된다.'},
+          {w:3, t:'효용이 가장 커지는 점은 예산선과 무차별곡선이 접하는 곳이다. 이때 두 재화의 한계효용 비율이 상대가격과 같아진다.'},
+          {w:2, t:'무차별곡선은 서로 교차하지 않는다. 교차하면 선호의 일관성이 깨진다.'},
+          {w:2, t:'예산선의 기울기는 두 재화의 상대가격이고, 소득이 늘면 예산선은 평행하게 바깥으로 이동한다.'},
+          {w:1, t:'완전대체재의 무차별곡선은 직선, 완전보완재는 L자 모양이다.'}
+        ]},
+        {t:'5. 소비자이론 — 수요곡선의 도출', doc:'4장 소비자이론', from:19, to:31, lines:[
+          {w:3, t:'가격이 내려갈 때의 반응은 실질소득이 늘어나는 소득효과와, 싸진 쪽으로 갈아타는 대체효과로 나뉜다.'},
+          {w:2, t:'각 가격에서의 최적 수량을 이어 붙이면 그 사람의 개별 수요곡선이 나온다. 수요곡선은 가정이 아니라 결과다.'},
+          {w:2, t:'시장 수요곡선은 개별 수요곡선을 수평으로 더한 것이다.'},
+          {w:1, t:'열등재는 소득효과가 반대로 작용하고, 그 힘이 대체효과보다 크면 기펜재가 된다.'},
+          {w:1, t:'소득효과와 대체효과를 나누는 방법에는 힉스식과 슬러츠키식이 있다.'}
+        ]},
+        {t:'6. 강의 노트에서', doc:'강의노트 0912', from:1, to:6, lines:[
+          {w:3, t:'시험 범위는 3장 전체와 4장 무차별곡선까지.'},
+          {w:2, t:'계산 문제는 탄력성 중심으로 출제한다고 언급됨.'},
+          {w:1, t:'기펜재는 개념만 알면 되고 계산은 내지 않는다고 함.'}
+        ]}
+      ]
+    }
+  },
+
+  world: {
+    label:'세계사', rounds:2, acc:71,
+    docs:[
+      {n:'근대 국민국가의 형성', p:34, c:4, r:2, acc:71, wrong:5, prog:48, last:'p.15 프랑스 혁명'},
+      {n:'시민혁명과 산업사회', p:29, c:4, r:1, acc:66, wrong:7, prog:20, last:'p.4 산업혁명 배경'},
+      {n:'수업필기 0905', p:9, c:2, r:3, acc:90, wrong:1, prog:100, last:'끝까지 봄'}
+    ],
+    doc:'근대 국민국가의 형성.pdf', pages:34,
+    toc:[['1. 30년 전쟁','p.3'],['2. 주권 개념','p.6'],['3. 절대왕정','p.11'],['4. 프랑스 혁명','p.15'],['5. 국민의 탄생','p.27']],
+    kw:['주권','영방','국민주권','표준어','징병제','공교육'],
+    oneline:'흩어져 있던 정치 단위가 “주권을 가진 국가”로, 그 안의 사람들이 “하나의 국민”으로 묶여간 과정을 다룹니다.',
+    concepts:[
+      {t:'베스트팔렌 조약', p:'p.6', d:'1648년 30년 전쟁을 끝내며, 각 영방이 사실상 독립적으로 행동하는 상태를 문서로 굳혔다.',
+       x:'영방 군주가 자기 영지의 종교를 정하는 권한 자체는 1555년 아우크스부르크 화의에서 이미 인정되었고(개인의 신앙 자유가 아니다), 여기서 그 범위가 칼뱅파까지 넓어졌다.'},
+      {t:'절대왕정', p:'p.11', d:'상비군과 관료제, 조세 제도를 왕이 직접 쥐면서 중앙집권이 진행된 체제.',
+       x:'왕권을 뒷받침한 것은 신의 권위였지만, 실제로 체제를 굴린 것은 세금을 걷는 관료 조직이었다.'},
+      {t:'프랑스 혁명', p:'p.15', d:'1789년, 신분제와 절대왕정을 무너뜨리고 국민주권 개념을 퍼뜨렸다.',
+       x:'주권이 왕이 아니라 국민에게 있다는 선언은 이후 유럽 전역의 정치 언어를 바꾸어 놓았다.'},
+      {t:'국민의 탄생', p:'p.27', d:'표준어·공교육·징병제가 서로 만난 적 없는 사람들을 하나의 국민으로 묶었다.',
+       x:'국민 정체성은 아래에서 저절로 생긴 것이 아니라, 국가가 위에서 설계해 보급한 장치의 결과에 가깝다.'}
+    ],
+    quiz:[
+      {type:'choice', src:'p.6', ref:0,
+       stem:'주권국가 체제의 출발점으로 흔히 지목되는 조약은 무엇인가?',
+       opts:['위트레흐트 조약','베스트팔렌 조약','빈 회의 최종 의정서','베르사유 조약'], answer:1,
+       why:'1648년 베스트팔렌 조약은 30년 전쟁을 끝내면서 각 영방이 사실상 독립적으로 행동하는 상태를 문서로 굳혔습니다. 이후 국제 질서를 ‘주권을 가진 국가들의 관계’로 보는 관점이 자리 잡아 주권국가 체제의 기점으로 다뤄집니다. 나머지 셋은 모두 그보다 뒤의 전후 처리 결과입니다.'},
+      {type:'ox', src:'p.27', ref:3,
+       stem:'프랑스 혁명 이전에도 “국민”이라는 정체성은 유럽 전역에서 이미 보편적이었다.', answer:false,
+       why:'혁명 이전 사람들의 소속감은 대체로 마을·영주·교구·신분에 묶여 있었습니다. 전국 단위의 “국민”이라는 감각은 표준어와 공교육, 징병제가 퍼진 19세기를 거치며 만들어진 쪽에 가깝습니다.'},
+      {type:'short', src:'p.6', ref:0,
+       stem:'1648년 30년 전쟁을 끝낸 조약의 이름을 쓰시오.',
+       accept:['베스트팔렌','베스트팔렌조약','웨스트팔리아','웨스트팔리아조약','베스트팔리아','베스트팔리아조약'], answer:'베스트팔렌 조약',
+       why:'같은 조약을 영어식으로 옮겨 웨스트팔리아 조약이라고도 씁니다.'},
+      {type:'essay', src:'p.27', ref:3,
+       stem:'언어·교육·징병제가 국민국가 형성에 각각 어떤 역할을 했는지 설명하시오.',
+       answer:'기준 대조',
+       rubric:[
+         {t:'표준어와 공교육이 지역별 정체성을 하나로 묶었음을 설명했는가', ok:true},
+         {t:'징병제가 국가에 대한 의무를 전 계층으로 넓혔음을 설명했는가', ok:true},
+         {t:'세 요소가 위에서 설계·보급된 장치라는 점을 지적했는가', ok:false}
+       ],
+       fb:'세 가지 장치의 기능은 정확히 썼습니다. 한 걸음 더 — 이것들이 자연히 생겨난 것이 아니라 국가가 의도적으로 보급한 도구였다는 점까지 쓰면 답이 완성됩니다.',
+       model:'표준어와 공교육은 지역마다 다르던 말과 기억을 하나의 국어·국사로 통일해, 서로 만난 적 없는 사람들이 같은 국민이라고 여기게 만들었다. 징병제는 귀족의 전쟁을 국민 전체의 의무로 바꾸어, 신분과 무관하게 국가에 대한 소속감을 퍼뜨렸다. 세 가지 모두 아래에서 저절로 생긴 것이 아니라 국가가 위에서 설계해 보급한 장치였다는 점이 핵심이다.',
+       why:''},
+      {type:'choice', src:'p.11', ref:1,
+       stem:'절대왕정을 실질적으로 떠받친 제도로 보기 어려운 것은?',
+       opts:['상비군','관료제','조세 제도','보통선거'], answer:3,
+       why:'절대왕정은 왕이 상비군·관료제·조세를 직접 쥐면서 성립했습니다. 보통선거는 훨씬 뒤인 19~20세기에 확대된 제도이고, 오히려 절대왕정을 무너뜨린 흐름 쪽에 속합니다.'},
+      {type:'choice', src:'p.15', ref:2,
+       stem:'프랑스 혁명이 유럽 전역에 퍼뜨린 핵심 원리는 무엇인가?',
+       opts:['왕권신수설','국민주권','교황의 세속 우위','봉건적 신분제'], answer:1,
+       why:'주권이 왕이 아니라 국민에게 있다는 원리입니다. 나머지 셋은 모두 혁명이 무너뜨리려 했던 쪽의 원리입니다.'},
+      {type:'choice', src:'p.27', ref:3,
+       stem:'국민 정체성을 만들어 낸 수단으로 보기 어려운 것은?',
+       opts:['표준어 보급','공교육 확대','징병제 시행','지역 방언 장려'], answer:3,
+       why:'앞의 셋은 서로 다르던 사람들을 하나의 국민으로 묶는 장치였습니다. 지역 방언을 장려하는 것은 오히려 지역 정체성을 남겨 두는 방향이라 국민국가 형성과는 반대로 작용합니다.'},
+      {type:'ox', src:'p.6', ref:0,
+       stem:'아우크스부르크 화의(1555)는 개인이 자기 신앙을 자유롭게 고를 권리를 인정했다.', answer:false,
+       why:'인정된 것은 영방 군주가 자기 영지의 종교를 정할 권한이었습니다. 개인은 군주가 정한 종교를 따르거나 떠나야 했으니, 개인의 신앙 자유와는 다릅니다.'},
+      {type:'ox', src:'p.6', ref:0,
+       stem:'30년 전쟁은 종교 갈등으로 시작했지만 영토와 세력을 둘러싼 다툼으로 끝났다.', answer:true,
+       why:'가톨릭 국가인 프랑스가 신교 진영을 지원한 것이 대표적입니다. 전쟁이 길어질수록 종교보다 각국의 이해관계가 앞섰습니다.'},
+      {type:'ox', src:'p.15', ref:2,
+       stem:'명예혁명과 미국 독립혁명은 같은 원리를 앞세운 혁명이었다.', answer:false,
+       why:'명예혁명(1688)은 의회 주권을, 미국 독립혁명(1776)은 저항권을 앞세웠습니다. 같은 “시민혁명”으로 묶이지만 내세운 원리가 다릅니다.'},
+      {type:'short', src:'p.15', ref:2,
+       stem:'주권이 왕이 아니라 국민에게 있다는 원리를 무엇이라 하는가?',
+       accept:['국민주권','국민 주권','인민주권','국민주권론'], answer:'국민주권',
+       why:'프랑스 인권선언 제3조가 “모든 주권의 원리는 본질적으로 국민에게 있다”고 못박은 것이 대표적인 표현입니다.'},
+      {type:'essay', src:'p.6', ref:0,
+       stem:'30년 전쟁이 “마지막 종교 전쟁이자 첫 근대 국제전”으로 불리는 이유를 설명하시오.',
+       answer:'기준 대조',
+       rubric:[
+         {t:'전쟁이 신교와 구교의 대립에서 시작되었음을 밝혔는가', ok:true},
+         {t:'진행되면서 국가의 이해관계가 종교를 앞질렀음을 사례와 함께 설명했는가', ok:true},
+         {t:'그 결과가 주권국가들의 관계라는 새 질서로 이어졌음을 지적했는가', ok:false}
+       ],
+       fb:'전쟁의 성격이 바뀌었다는 점은 정확히 짚었습니다. 한 걸음 더 — 그래서 왜 “근대”인지, 즉 그 결과가 주권국가 간 관계라는 새 질서로 이어졌다는 점까지 쓰면 답이 완성됩니다.',
+       model:'전쟁은 신교와 구교의 대립에서 시작했지만, 가톨릭 국가인 프랑스가 신교 진영을 지원하는 등 진행될수록 종교보다 각국의 이해관계가 앞섰다. 전쟁을 끝낸 베스트팔렌 조약은 종교 문제를 각 영방에 맡기고 국가 사이의 관계를 주권이라는 언어로 정리했다. 종교가 전쟁의 명분이던 시대가 여기서 닫히고, 주권을 가진 국가들이 이해관계로 겨루는 질서가 열렸기 때문에 두 가지 이름이 함께 붙는다.',
+       why:''}
+    ],
+    typeAcc:{choice:78, ox:62, short:85, essay:55},
+    diag:'연도와 이름을 묻는 문항은 강한데, “왜 그랬는가”를 묻는 문항에서 점수가 깎입니다. 사건을 외우는 방식에서 사건 사이의 인과를 설명하는 방식으로 바꿔야 할 시점입니다.',
+    weak:[
+      {c:3, acc:48, wrong:4,
+       why:'“국민 정체성은 원래 있었다”는 쪽으로 기우는 OX 오답이 3회입니다. 정체성이 만들어진 것이라는 관점 자체가 아직 잡히지 않았습니다.'},
+      {c:0, acc:66, wrong:3,
+       why:'조약 이름은 맞히지만 아우크스부르크 화의의 내용과 섞습니다. 두 사건의 연도(1555 / 1648)와 각각이 정한 내용을 나란히 두고 볼 필요가 있습니다.'},
+      {c:1, acc:72, wrong:2,
+       why:'체제의 특징은 나열하는데, 그 체제가 어떻게 유지되었는지를 묻는 서술형에서 관료제와 조세를 빠뜨립니다.'}
+    ],
+    plan:['국민의 탄생 — “만들어진 정체성” 관점으로 OX 6문항 다시 풀기','베스트팔렌 vs 아우크스부르크 — 두 사건 비교표 확인','절대왕정 — 서술형 1문항으로 유지 조건 쓰기 연습'],
+    full:{
+      updated:'09.10 갱신',
+      scope:'근대 국민국가 전체 + 시민혁명과 산업사회 1~2절',
+      sections:[
+        {t:'1. 주권국가의 등장', doc:'근대 국민국가의 형성', from:1, to:10, lines:[
+          {w:3, t:'베스트팔렌 조약(1648) — 30년 전쟁을 끝내며 각 영방이 사실상 독립적으로 행동하는 상태를 문서로 굳혔다. 주권국가 체제의 기점으로 다뤄진다.',
+           n:'1555년 아우크스부르크 화의와 섞지 마세요. 두 사건의 연도와 내용을 나란히 놓고 한 번 정리해야 합니다.', wrong:3},
+          {w:3, t:'30년 전쟁(1618–48)은 종교 전쟁으로 시작했지만 영토와 세력 다툼으로 끝났다.'},
+          {w:2, t:'영방 군주가 자기 영지의 종교를 정하는 권한은 1555년 아우크스부르크에서 나왔고, 1648년에 그 범위가 칼뱅파까지 넓어졌다. 개인의 신앙 자유와는 다르다.'},
+          {w:2, t:'주권은 대내적으로 최고, 대외적으로 독립이라는 두 면을 함께 가진다.'},
+          {w:1, t:'“베스트팔렌 체제”라는 말 자체는 20세기 국제정치학이 나중에 붙인 이름이다.'},
+          {w:1, t:'신성로마제국은 조약 이후에도 형식상 존속했으나 실질적 통합력은 잃었다.'}
+        ]},
+        {t:'2. 절대왕정', doc:'근대 국민국가의 형성', from:11, to:14, lines:[
+          {w:3, t:'절대왕정을 실제로 굴린 것은 신의 권위가 아니라 상비군·관료제·조세 제도였다.',
+           n:'서술형에서 “왕권신수설”만 쓰고 관료제와 조세를 빠뜨리는 답안이 반복됩니다.', wrong:2},
+          {w:2, t:'중상주의는 국부를 금은의 축적으로 보고 수출을 장려하고 수입을 억제했다.'},
+          {w:1, t:'베르사유 궁전은 귀족을 궁정 생활에 묶어 두는 정치적 장치이기도 했다.'}
+        ]},
+        {t:'3. 시민혁명', doc:'근대 국민국가의 형성', from:15, to:26, lines:[
+          {w:3, t:'프랑스 혁명(1789)은 주권이 왕이 아니라 국민에게 있다는 선언을 유럽 전역에 퍼뜨렸다.'},
+          {w:2, t:'명예혁명(1688)은 의회 주권을, 미국 독립혁명(1776)은 저항권을 앞세웠다. 같은 “시민혁명”이라도 내세운 원리가 다르다.'},
+          {w:2, t:'인권선언(1789)은 자유·소유·안전·압제에 대한 저항을 자연권으로 못박았다.'},
+          {w:1, t:'삼부회 소집(1789년 5월)이 혁명의 직접적인 도화선이 되었다.'},
+          {w:1, t:'나폴레옹 전쟁은 혁명의 원리를 무력으로 유럽에 퍼뜨리는 동시에 각국의 민족 감정을 자극했다.'}
+        ]},
+        {t:'4. 국민의 탄생', doc:'근대 국민국가의 형성', from:27, to:34, lines:[
+          {w:3, t:'국민 정체성은 원래 있던 것이 아니라 표준어·공교육·징병제를 통해 만들어진 쪽에 가깝다.',
+           n:'“원래 있었다”는 쪽으로 기우는 OX 오답이 반복됩니다. 이 관점 자체를 먼저 잡아야 합니다.', wrong:3},
+          {w:2, t:'징병제는 귀족의 전쟁을 국민 전체의 의무로 바꾸어, 신분과 무관한 소속감을 퍼뜨렸다.'},
+          {w:2, t:'철도와 신문이 같은 시간과 같은 소식을 공유하게 만들어 국민이라는 감각을 뒷받침했다.'},
+          {w:1, t:'혁명 당시 프랑스에서 표준 프랑스어를 편하게 쓰는 사람은 인구의 절반이 되지 않았다.'}
+        ]},
+        {t:'5. 산업혁명과 사회 변화', doc:'시민혁명과 산업사회', from:1, to:29, lines:[
+          {w:3, t:'산업혁명은 기계와 공장이 일자리와 도시의 모양을 함께 바꾼 과정이다. 기술 이야기만으로는 설명되지 않는다.'},
+          {w:3, t:'공장제는 노동을 시간 단위로 관리하기 시작했고, 이것이 근대적 시간 감각의 출발점이 되었다.'},
+          {w:2, t:'영국이 먼저 시작한 조건으로는 석탄, 식민지 시장, 농업 생산성 향상, 재산권 제도가 함께 꼽힌다.'},
+          {w:2, t:'도시로 사람이 몰리며 생긴 위생·주거 문제가 이후 사회 입법의 배경이 되었다.'},
+          {w:2, t:'노동자 계급의 형성은 참정권 요구로 이어졌다. 차티스트 운동이 대표적이다.'},
+          {w:1, t:'러다이트 운동은 기계 자체에 대한 반대라기보다 일자리와 임금을 둘러싼 저항이었다.'},
+          {w:1, t:'제2차 산업혁명(전기·화학·강철)은 19세기 후반 독일과 미국이 주도했다.'}
+        ]},
+        {t:'6. 수업 필기', doc:'수업필기 0905', from:1, to:9, lines:[
+          {w:3, t:'시험은 사건 나열이 아니라 “왜 그랬는가”를 묻는 쪽으로 낸다고 언급됨.'},
+          {w:2, t:'베스트팔렌 · 프랑스 혁명 · 국민국가 세 축을 연결해서 설명할 수 있어야 한다고 강조.'},
+          {w:1, t:'연표는 외우되, 서술형에서는 인과를 쓸 것.'}
+        ]}
+      ]
+    }
+  },
+
+  stat: {
+    label:'통계학', rounds:1, acc:69,
+    docs:[
+      {n:'5장 표본분포와 추정', p:22, c:4, r:1, acc:69, wrong:9, prog:41, last:'p.12 표준오차'},
+      {n:'6장 가설검정', p:26, c:5, r:0, acc:0, wrong:0, prog:0, last:'아직 안 봄'},
+      {n:'공식 정리본', p:4, c:3, r:4, acc:92, wrong:1, prog:100, last:'끝까지 봄'}
+    ],
+    doc:'5장 표본분포와 추정.pdf', pages:22,
+    toc:[['1. 모집단과 표본','p.2'],['2. 중심극한정리','p.5'],['3. 표준오차','p.12'],['4. 신뢰구간','p.18'],['5. 표본 크기','p.20']],
+    kw:['모수','표본평균','중심극한정리','표준오차','신뢰수준','√n'],
+    oneline:'표본 하나로 모집단을 추측할 때, 그 추측이 얼마나 흔들리는지를 숫자로 다루는 장입니다.',
+    concepts:[
+      {t:'중심극한정리', p:'p.5', d:'표본이 충분히 크면 표본평균의 분포는 모집단 모양과 무관하게 정규분포에 가까워진다.',
+       x:'모집단이 한쪽으로 심하게 치우쳐 있어도, 표본평균들을 모아 보면 종 모양에 가까워진다는 것이 핵심이다.'},
+      {t:'표준오차', p:'p.12', d:'표본평균이 흩어지는 정도. 모표준편차를 √n으로 나눈 값이다.',
+       x:'분모가 n이 아니라 √n이라는 점이 중요하다. 표본을 4배 모아야 오차가 절반으로 줄어든다.'},
+      {t:'신뢰구간', p:'p.18', d:'같은 방법으로 구간을 여러 번 만들면 그중 95%가 모수를 포함하도록 만든 구간.',
+       x:'95%는 이미 구한 하나의 구간이 아니라, 구간을 만드는 “절차”가 가진 성질이다.'},
+      {t:'표본 크기와 정밀도', p:'p.20', d:'오차를 절반으로 줄이려면 표본을 4배, 1/4로 줄이려면 16배 모아야 한다.',
+       x:'√n 때문에 정밀도를 높이는 비용은 제곱으로 늘어난다. 조사 설계에서 표본 크기를 정할 때의 기준이 된다.'}
+    ],
+    quiz:[
+      {type:'choice', src:'p.12', ref:1,
+       stem:'표본 크기를 4배로 늘리면 표본평균의 표준오차는 어떻게 되는가?',
+       opts:['4배가 된다','2배가 된다','1/2이 된다','1/4이 된다'], answer:2,
+       why:'표준오차는 σ/√n입니다. n이 4배가 되면 분모의 √n이 2배가 되므로 표준오차는 1/2로 줄어듭니다. 1/4로 줄이려면 표본이 16배 필요합니다.'},
+      {type:'ox', src:'p.5', ref:0,
+       stem:'모집단이 정규분포가 아니면 표본평균의 분포도 절대 정규분포에 가까워지지 않는다.', answer:false,
+       why:'중심극한정리가 말하는 바가 정확히 그 반대입니다. 모집단이 치우쳐 있어도 표본이 충분히 크면 표본평균의 분포는 정규분포에 가까워집니다.'},
+      {type:'short', src:'p.12', ref:1,
+       stem:'표본평균이 흩어지는 정도를 나타내는, 모표준편차를 √n으로 나눈 값을 무엇이라 하는가?',
+       accept:['표준오차','표준 오차','standard error','se'], answer:'표준오차',
+       why:'표준편차(모집단이 흩어진 정도)와 표준오차(표본평균이 흩어진 정도)는 다른 값이니 섞지 않도록 주의하세요.'},
+      {type:'essay', src:'p.18', ref:2,
+       stem:'“95% 신뢰구간이란 한 번 구한 그 구간이 모수를 포함할 확률이 95%라는 뜻이다” — 이 설명이 왜 부정확한지 쓰시오.',
+       answer:'기준 대조',
+       rubric:[
+         {t:'모수와 계산이 끝난 구간이 모두 고정된 값임을 밝혔는가', ok:true},
+         {t:'한 구간은 포함하거나 하지 않거나 둘 중 하나임을 지적했는가', ok:false},
+         {t:'95%를 반복 시행에서의 비율로 바꿔 설명했는가', ok:true}
+       ],
+       fb:'전제와 결론은 정확합니다. 중간 한 단계 — 이미 계산이 끝난 구간에 대해서는 확률을 말할 수 없고 참이거나 거짓일 뿐이라는 문장을 넣으면 논리가 이어집니다.',
+       model:'모수는 고정된 값이고, 이미 계산이 끝난 구간도 고정된 값이다. 따라서 그 구간이 모수를 포함하는지는 확률의 문제가 아니라 참이거나 거짓이다. 95%는 구간을 만드는 절차의 성질로, 같은 방법으로 표본을 반복해서 뽑아 구간을 만들면 그중 약 95%가 모수를 덮는다는 뜻이다.',
+       why:''},
+      {type:'choice', src:'p.5', ref:0,
+       stem:'중심극한정리가 말하는 내용으로 옳은 것은?',
+       opts:['모집단이 정규분포면 표본도 정규분포다','표본이 충분히 크면 표본평균의 분포가 정규분포에 가까워진다','표본이 커지면 모집단이 정규분포가 된다','표본평균은 항상 모평균과 정확히 같다'], answer:1,
+       why:'정리가 말하는 것은 “표본평균의 분포”에 대한 것이고, 모집단 모양을 가리지 않는다는 점이 핵심입니다. ③처럼 모집단 자체가 바뀐다는 말은 아니고, ④는 표본평균의 기댓값이 모평균과 같다는 것과 혼동한 것입니다.'},
+      {type:'choice', src:'p.18', ref:2,
+       stem:'95% 신뢰구간에 대한 설명으로 옳은 것은?',
+       opts:['모수가 이 구간에 있을 확률이 95%다','같은 방법을 반복하면 만들어지는 구간의 약 95%가 모수를 포함한다','표본의 95%가 이 구간 안에 들어간다','신뢰수준을 높이면 구간이 좁아진다'], answer:1,
+       why:'95%는 이미 계산된 하나의 구간이 아니라 구간을 만드는 절차의 성질입니다. ③은 개별 관측값과 구간을 혼동한 것이고, ④는 반대입니다. 신뢰수준을 높이면 구간은 넓어집니다.'},
+      {type:'choice', src:'p.18', ref:2,
+       stem:'p값의 정의로 옳은 것은?',
+       opts:['귀무가설이 참일 확률','대립가설이 참일 확률','귀무가설이 참일 때 관측된 것만큼 극단적인 결과가 나올 확률','1종 오류를 범할 확률'], answer:2,
+       why:'p값은 가설이 참일 확률이 아니라 데이터가 나올 확률입니다. ①과 ②처럼 뒤집어 읽는 것이 가장 흔한 오해이고, ④의 1종 오류 확률은 미리 정하는 유의수준 쪽입니다.'},
+      {type:'ox', src:'p.12', ref:1,
+       stem:'표준편차와 표준오차는 사실상 같은 값을 가리키는 다른 이름이다.', answer:false,
+       why:'표준편차는 모집단(또는 표본) 안의 값들이 흩어진 정도이고, 표준오차는 표본평균이라는 추정값이 흩어진 정도입니다. 표준오차는 표준편차를 √n으로 나눈 값이라 항상 더 작습니다.'},
+      {type:'ox', src:'p.18', ref:2,
+       stem:'신뢰수준을 95%에서 99%로 높이면 신뢰구간은 넓어진다.', answer:true,
+       why:'더 확신하려면 더 넓게 잡아야 합니다. 확신(신뢰수준)과 정밀도(구간의 좁음)는 맞바꾸는 관계라, 표본 크기가 그대로면 하나를 얻는 만큼 다른 하나를 내줍니다.'},
+      {type:'ox', src:'p.18', ref:2,
+       stem:'표본이 아주 커지면 실질적으로 의미 없는 작은 차이도 통계적으로 유의하게 나올 수 있다.', answer:true,
+       why:'표본이 커질수록 표준오차가 줄어 아주 작은 차이도 검정을 통과합니다. 그래서 통계적 유의성과 실질적 중요성은 따로 따져야 합니다.'},
+      {type:'short', src:'p.18', ref:2,
+       stem:'참인 귀무가설을 잘못 기각하는 오류를 무엇이라 하는가?',
+       accept:['1종 오류','1종오류','제1종 오류','제1종오류','일종오류','type i error','타입1오류'], answer:'1종 오류 (제1종 오류)',
+       why:'반대로 거짓인 귀무가설을 기각하지 못하는 것은 2종 오류입니다. 유의수준은 1종 오류를 허용할 최대 확률을 미리 정해 둔 값입니다.'},
+      {type:'essay', src:'p.12', ref:1,
+       stem:'표본을 4배로 늘려도 오차가 1/4이 아니라 1/2만 줄어드는 이유를 설명하시오.',
+       answer:'기준 대조',
+       rubric:[
+         {t:'표준오차의 식이 σ/√n임을 밝혔는가', ok:true},
+         {t:'분모가 n이 아니라 √n이라는 점을 짚었는가', ok:true},
+         {t:'오차를 1/k로 줄이려면 표본이 k²배 필요하다는 일반화까지 했는가', ok:false}
+       ],
+       fb:'식과 분모의 √까지는 정확합니다. 마지막으로 일반화 한 문장 — 오차를 1/k로 줄이려면 표본이 k배가 아니라 k²배 필요하다는 점을 덧붙이면 완성됩니다.',
+       model:'표준오차는 σ/√n이다. n이 4배가 되면 분모의 √n은 √4, 즉 2배가 되므로 표준오차는 1/2로 줄어든다. 분모에 n이 아니라 √n이 들어가기 때문에 정밀도를 높이는 비용은 제곱으로 커진다. 일반적으로 오차를 1/k로 줄이려면 표본을 k²배 모아야 하고, 그래서 조사에서 표본을 키우는 일은 금방 비싸진다.',
+       why:''}
+    ],
+    typeAcc:{choice:74, ox:58, short:66, essay:52},
+    diag:'공식은 외웠지만 √n과 “절차의 성질”이라는 해석이 아직 붙지 않았습니다. 계산 연습보다 개념의 말뜻을 다시 잡는 쪽이 먼저입니다.',
+    weak:[
+      {c:1, acc:45, wrong:5,
+       why:'분모를 n으로 쓴 오답이 4회입니다. σ/√n의 √가 계산에 반영되지 않아, 표본을 늘렸을 때 오차가 줄어드는 정도를 항상 과대평가합니다.'},
+      {c:2, acc:52, wrong:3,
+       why:'“구간이 모수를 포함할 확률”이라는 표현을 그대로 쓰고 있습니다. 95%가 구간이 아니라 구간을 만드는 절차의 성질이라는 전환이 필요합니다.'},
+      {c:0, acc:70, wrong:2,
+       why:'중심극한정리에 “모집단이 정규분포여야 한다”는 조건을 덧붙이는 오답이 반복됩니다. 정리가 필요 없다고 말하는 조건을 거꾸로 기억하고 있습니다.'}
+    ],
+    plan:['표준오차 — σ/√n 로 n=4·16·100을 직접 대입해 보기','신뢰구간 — 절차의 성질로 다시 쓰는 서술형 1문항','중심극한정리 — 조건을 묻는 OX 4문항'],
+    full:{
+      updated:'09.11 갱신',
+      scope:'5장 전체 + 6장 p.8까지',
+      sections:[
+        {t:'1. 모집단과 표본', doc:'5장 표본분포와 추정', from:1, to:4, lines:[
+          {w:3, t:'모수는 고정된 값이고, 통계량은 표본마다 달라지는 확률변수다.',
+           n:'이 구분이 신뢰구간 해석의 바탕입니다. 여기가 흔들리면 4절에서 반드시 틀립니다.'},
+          {w:2, t:'표본추출이 편향되면 표본을 아무리 키워도 편향은 줄지 않는다. 크기와 대표성은 다른 문제다.'},
+          {w:1, t:'단순무작위추출 외에 층화·군집추출이 있고, 각각 오차 계산식이 달라진다.'}
+        ]},
+        {t:'2. 중심극한정리', doc:'5장 표본분포와 추정', from:5, to:11, lines:[
+          {w:3, t:'표본이 충분히 크면 표본평균의 분포는 모집단 모양과 무관하게 정규분포에 가까워진다.',
+           n:'“모집단이 정규분포여야 한다”는 조건을 거꾸로 붙이는 오답이 반복됩니다. 정리가 필요 없다고 말하는 조건입니다.', wrong:2},
+          {w:2, t:'실무에서는 n≥30을 기준으로 삼지만, 치우침이 심한 모집단이면 더 큰 표본이 필요하다.'},
+          {w:2, t:'표본평균의 기댓값은 모평균과 같다. 중심은 그대로 두고 흩어짐만 줄어든다.'},
+          {w:1, t:'모집단이 이미 정규분포라면 n이 작아도 표본평균은 정확히 정규분포를 따른다.'}
+        ]},
+        {t:'3. 표준오차', doc:'5장 표본분포와 추정', from:12, to:17, lines:[
+          {w:3, t:'표준오차 = σ / √n. 분모가 n이 아니라 √n이다.',
+           n:'분모를 n으로 쓴 오답이 가장 많습니다. 표본을 늘렸을 때 오차가 줄어드는 정도를 매번 과대평가하게 됩니다.', wrong:4},
+          {w:3, t:'오차를 1/2로 줄이려면 표본이 4배, 1/4로 줄이려면 16배 필요하다.'},
+          {w:2, t:'표준편차(모집단이 흩어진 정도)와 표준오차(표본평균이 흩어진 정도)는 다른 값이다.'},
+          {w:1, t:'σ를 모르면 표본표준편차 s로 대신하고 t분포를 쓴다.'}
+        ]},
+        {t:'4. 신뢰구간', doc:'5장 표본분포와 추정', from:18, to:22, lines:[
+          {w:3, t:'95%는 이미 구한 하나의 구간이 아니라, 구간을 만드는 절차가 가진 성질이다.',
+           n:'“이 구간이 모수를 포함할 확률이 95%”라는 표현을 그대로 쓰고 있습니다. 문장을 바꿔 쓰는 연습이 필요합니다.', wrong:3},
+          {w:2, t:'계산이 끝난 구간은 모수를 포함하거나 포함하지 않거나 둘 중 하나다. 확률을 말할 수 없다.'},
+          {w:2, t:'신뢰수준을 높이면 구간이 넓어진다. 확신과 정밀도는 맞바꾸는 관계다.'},
+          {w:1, t:'비율의 신뢰구간은 표준오차 자리에 √(p(1−p)/n)을 넣는다.'}
+        ]},
+        {t:'5. 가설검정', doc:'6장 가설검정', from:1, to:26, lines:[
+          {w:3, t:'p값은 귀무가설이 참일 확률이 아니다. 귀무가설이 참일 때 관측된 것만큼 극단적인 결과가 나올 확률이다.',
+           n:'가장 흔한 오해이고, 서술형으로 나오기 쉬운 지점입니다.'},
+          {w:3, t:'검정은 귀무가설을 기각하거나 기각하지 못하는 것이지, 채택하는 것이 아니다.'},
+          {w:2, t:'1종 오류는 참인 귀무가설을 기각하는 것, 2종 오류는 거짓인 귀무가설을 기각하지 못하는 것이다.'},
+          {w:2, t:'검정력은 1에서 2종 오류 확률을 뺀 값이고, 표본이 커질수록 올라간다.'},
+          {w:2, t:'표본이 아주 크면 실질적으로 의미 없는 차이도 통계적으로 유의해진다. 유의성과 중요성은 다르다.'},
+          {w:1, t:'단측·양측검정은 가설을 세울 때 미리 정해야 한다. 결과를 보고 바꾸면 안 된다.'},
+          {w:1, t:'유의수준 0.05는 관행일 뿐 자연법칙이 아니다.'}
+        ]},
+        {t:'6. 공식 정리', doc:'공식 정리본', from:1, to:4, lines:[
+          {w:3, t:'표준오차 σ/√n, 신뢰구간 x̄ ± z·(σ/√n), 검정통계량 z = (x̄ − μ₀)/(σ/√n) — 세 식은 모두 σ/√n을 공유한다.'},
+          {w:2, t:'z = 1.96은 95%, z = 2.58은 99%에 대응한다.'},
+          {w:1, t:'σ를 모를 때는 z 대신 t를 쓰고, 자유도는 n − 1이다.'}
+        ]}
+      ]
+    }
+  }
+};
+
+/* 오답 노트: 실제 문항을 참조해 해설까지 함께 보여줍니다 */
+var WRONGS = [
+  {sub:'econ',  qi:0, n:3, last:'09.10', mine:0},
+  {sub:'stat',  qi:2, n:3, last:'09.11', mine:'표준편차'},
+  {sub:'world', qi:0, n:2, last:'09.09', mine:2},
+  {sub:'stat',  qi:1, n:2, last:'09.08', mine:1},
+  {sub:'econ',  qi:3, n:1, last:'09.07', mine:null},
+  {sub:'world', qi:1, n:1, last:'09.05', mine:1}
+];
+
+var TYPE_LABEL = {choice:'객관식', ox:'OX', short:'단답형', essay:'서술형'};
+var TYPE_ORDER = ['choice','ox','short','essay'];
+var KEYS = ['①','②','③','④'];
+
+/* ══════════ 유틸 ══════════ */
+function $(s, r){ return (r||document).querySelector(s); }
+function $$(s, r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); }
+function esc(s){ return String(s).replace(/[&<>"]/g, function(c){
+  return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+function norm(s){ return String(s).toLowerCase().replace(/\s+/g,'').replace(/[.,·'"]/g,''); }
+var ICON_CHECK = '<svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>';
+var ICON_X = '<svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>';
+var ICON_ARROW = '<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+var ICON_CARET = '<svg class="caret" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>';
+var ICON_SUN = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
+var ICON_MOON = '<svg viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>';
+
+/* ══════════ 상태 ══════════ */
+var sub = 'econ';
+var screen = 'quiz';
+var typeOn = {choice:true, ox:true, short:true, essay:true};
+var qi = 0, picked = null, graded = false;
+var session = [];
+var focusConcept = null;
+var selWrong = {}, openWrong = {};
+var resultFilter = 'all', allOpen = false;
+var density = 1;              // 3=핵심만 · 2=보통 · 1=빠짐없이(기본)
+var qCount = 0;               // 한 세트 문항 수 · 0 = 전체
+var booted = false;
+
+var drill = null;          // 오답/취약 개념 재출제 세트 — [{sub, q, label}]
+function D(){ return DATA[sub]; }
+function items(){
+  if (drill) return drill;
+  var list = D().quiz.filter(function(q){ return typeOn[q.type]; })
+          .map(function(q){ return {sub:sub, q:q}; });
+  return qCount > 0 ? list.slice(0, qCount) : list;
+}
+function subAcc(d){
+  var xs = d.docs.filter(function(x){ return x.acc > 0; });
+  if (!xs.length) return 0;
+  return Math.round(xs.reduce(function(a,x){ return a + x.acc; }, 0) / xs.length);
+}
+
+/* ══════════ 테마 ══════════ */
+function effTheme(){
+  var t = document.documentElement.getAttribute('data-theme');
+  if (t === 'light' || t === 'dark') return t;
+  return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+function renderTheme(){
+  var t = effTheme(), b = $('[data-theme-btn]');
+  b.innerHTML = t === 'dark' ? ICON_SUN : ICON_MOON;
+  b.setAttribute('aria-label', t === 'dark' ? '라이트 모드로 전환' : '다크 모드로 전환');
+  b.title = t === 'dark' ? '라이트 모드로 전환' : '다크 모드로 전환';
+}
+if (window.matchMedia){
+  var mq = window.matchMedia('(prefers-color-scheme: dark)');
+  var onMq = function(){ if (!document.documentElement.getAttribute('data-theme')) renderTheme(); };
+  if (mq.addEventListener) mq.addEventListener('change', onMq);
+  else if (mq.addListener) mq.addListener(onMq);
+}
+
+/* ══════════ 화면 전환 ══════════ */
+function go(name){
+  var jumping = (name === 'summary' && focusConcept !== null);
+  screen = name;
+  $$('.screen').forEach(function(s){ s.hidden = s.dataset.screen !== name; });
+  $$('.nav').forEach(function(b){
+    b.classList.toggle('on', b.dataset.go === name || (name === 'result' && b.dataset.go === 'quiz'));
+  });
+  if (name === 'summary') renderSummary();
+  if (name === 'full') renderFull();
+  if (name === 'drawer') renderDrawer();
+  if (name === 'result') renderResult();
+  if (name === 'wrong') renderWrong();
+  if (name === 'weak') renderWeak();
+  if (booted && !jumping) $('.app').scrollIntoView({block:'start', behavior:'smooth'});
+}
+
+/* ══════════ 레일 ══════════ */
+function renderRail(){
+  var d = D();
+  $('[data-raildocs]').innerHTML = d.docs.map(function(doc, i){
+    return '<button type="button" class="doc-i' + (i===0?' on':'') + '"><b>' + esc(doc.n) +
+           '</b><em>' + doc.p + 'p</em></button>';
+  }).join('');
+  var totWrong = d.docs.reduce(function(a,x){ return a + x.wrong; }, 0);
+  $('[data-railfoot]').innerHTML =
+    esc(d.label) + '<br>회독 ' + d.rounds + ' · 오답 ' + totWrong + '<br>정답률 ' + subAcc(d) + '%';
+  $('[data-wrongcount]').textContent = WRONGS.length;
+}
+
+/* ══════════ ① 자료 넣기 ══════════ */
+var QUEUE = [{n:'3장 수요와 공급.pdf', sz:'4.2 MB'}, {n:'수업 필기 0912.jpg', sz:'1.8 MB'}];
+var PROC = ['업로드','텍스트 추출','개념 추출','문항 생성'];
+var procTimer = null;
+
+function renderQueue(stage){
+  $('[data-queue]').innerHTML = QUEUE.map(function(f){
+    var st = stage < 0 ? '대기' : (stage >= PROC.length ? '완료' : PROC[stage] + ' 중');
+    return '<div class="qrow"><div class="qrow-top"><b>' + esc(f.n) + '</b>' +
+      '<span class="sz">' + f.sz + '</span>' +
+      '<span class="st' + (stage >= PROC.length ? ' done' : '') + '">' + st + '</span></div>' +
+      '<div class="steps">' + PROC.map(function(p, i){
+        var cls = stage > i ? 'done' : (stage === i ? 'doing' : '');
+        return '<span class="' + cls + '">' + p + '</span>';
+      }).join('') + '</div></div>';
+  }).join('');
+}
+function startProc(){
+  if (procTimer) return;
+  var stage = 0;
+  $('[data-startproc]').disabled = true;
+  $('[data-procdone]').hidden = true;
+  renderQueue(stage);
+  procTimer = setInterval(function(){
+    stage++;
+    renderQueue(stage);
+    if (stage >= PROC.length){
+      clearInterval(procTimer); procTimer = null;
+      $('[data-startproc]').disabled = false;
+      $('[data-procdone]').hidden = false;
+    }
+  }, 850);
+}
+
+/* ══════════ ② 정리본 ══════════ */
+function renderSummary(){
+  var d = D();
+  $('[data-sumdoc]').textContent = d.doc;
+  $('[data-sumpages]').textContent = d.pages;
+  $('[data-sumcount]').textContent = d.concepts.length;
+  $('[data-toc]').innerHTML = d.toc.map(function(t){
+    return '<button type="button">' + esc(t[0]) + '<em>' + esc(t[1]) + '</em></button>';
+  }).join('');
+  var active = focusConcept === null ? 0 : focusConcept;
+  $('[data-clist]').innerHTML = d.concepts.map(function(c, i){
+    return '<button type="button" class="citem' + (i===active?' on':'') + '" data-c="' + i + '">' +
+      '<span class="citem-h"><b>' + esc(c.t) + '</b><span class="p">' + esc(c.p) + '</span></span>' +
+      '<p>' + esc(c.d) + '</p></button>';
+  }).join('');
+  $('[data-kw]').innerHTML = d.kw.map(function(k){ return '<span class="chip">' + esc(k) + '</span>'; }).join('');
+  $('[data-oneline]').textContent = d.oneline;
+  showExcerpt(active);
+
+  if (focusConcept !== null){
+    var el = $('[data-c="' + focusConcept + '"]');
+    if (el){
+      el.classList.add('flash');
+      setTimeout(function(){ el.classList.remove('flash'); }, 1600);
+      el.scrollIntoView({block:'center', behavior:'smooth'});
+    }
+    focusConcept = null;
+  }
+}
+function showExcerpt(i){
+  var c = D().concepts[i];
+  $('[data-excerpt]').innerHTML = esc(c.x) + '<cite>' + esc(D().doc) + ' ' + esc(c.p) + '</cite>';
+}
+
+/* ══════════ ③ 전체 정리본 ══════════ */
+function renderFull(){
+  var d = D(), f = d.full;
+  var pages = d.docs.reduce(function(a, x){ return a + x.p; }, 0);
+  var all = 0, shown = 0;
+  f.sections.forEach(function(s){
+    s.lines.forEach(function(l){ all++; if (l.w >= density) shown++; });
+  });
+
+  // 원문 커버리지 — 각 자료의 몇 쪽까지가 정리본에 들어왔는지 계산합니다.
+  var cov = {};
+  f.sections.forEach(function(s){
+    cov[s.doc] = (cov[s.doc] || 0) + (s.to - s.from + 1);
+  });
+  var gaps = d.docs.filter(function(x){ return (cov[x.n] || 0) < x.p; });
+
+  $('[data-fullsub]').textContent = d.label;
+  $('[data-fullupdated]').textContent = f.updated;
+  $('[data-fullscope]').textContent = f.scope;
+  $('[data-fullstat]').innerHTML = '자료 <b>' + d.docs.length + '</b>개 · 원문 <b>' + pages +
+    '</b>쪽 전부 반영 → 정리 <b>' + all + '</b>줄 · 지금 <b>' + shown + '</b>줄 보는 중';
+  $$('[data-density] button').forEach(function(b){ b.classList.toggle('on', Number(b.dataset.d) === density); });
+
+  $('[data-fullsrc]').innerHTML = d.docs.map(function(x){
+    var c = cov[x.n] || 0, pctp = Math.round(c / x.p * 100);
+    return '<div class="srcdoc"><span>' + esc(x.n) + '</span>' +
+      '<em>' + c + ' / ' + x.p + '쪽</em></div>' +
+      '<div class="bar' + (c >= x.p ? ' ok' : ' bad') + '" style="margin:0 0 9px"><i style="width:' +
+      Math.min(100, pctp) + '%"></i></div>';
+  }).join('') +
+  (gaps.length
+    ? '<p style="font-size:11.5px;color:var(--bad-ink);margin-top:4px">아직 반영되지 않은 구간이 있습니다: ' +
+      gaps.map(function(x){ return esc(x.n); }).join(', ') + '</p>'
+    : '<p style="font-size:11.5px;color:var(--ok-ink);margin-top:4px">빠진 구간 없음 — 모든 쪽이 정리본 어딘가에 들어가 있습니다.</p>');
+
+  $('[data-fullbody]').innerHTML = f.sections.map(function(s){
+    var vis = s.lines.filter(function(l){ return l.w >= density; });
+    var cut = s.lines.length - vis.length;
+    return '<section class="fsec"><div class="fsec-h"><h3>' + esc(s.t) + '</h3>' +
+      '<span class="src">' + esc(s.doc) + ' p.' + s.from + '–' + s.to + '</span></div><div class="flines">' +
+      vis.map(function(l){
+        return '<div class="fline w' + l.w + '"><span class="mk"></span><div class="bd">' +
+          '<p class="ft">' + esc(l.t) + '</p>' +
+          (l.wrong ? '<div class="tags"><span class="chip bad">이 문장에서 ' + l.wrong + '회 오답</span></div>' : '') +
+          (l.n ? '<p class="fn">' + esc(l.n) + '</p>' : '') +
+          '</div></div>';
+      }).join('') +
+      (cut > 0 ? '<div class="fcut"><span>이 단원의 ' + cut + '줄이 접혀 있습니다 (지워진 것이 아닙니다)</span>' +
+        '<button type="button" data-dall>펼치기</button></div>' : '') +
+      '</div></section>';
+  }).join('');
+}
+
+/* ══════════ ④ 과목 서랍 ══════════ */
+function renderDrawer(){
+  var d = D();
+  $('[data-drawname]').textContent = d.label;
+  var totC = d.docs.reduce(function(a,x){ return a + x.c; }, 0);
+  var totP = d.docs.reduce(function(a,x){ return a + x.p; }, 0);
+  $('[data-drawstats]').innerHTML =
+    stat('자료', d.docs.length, '개') + stat('원문', totP, '쪽') +
+    stat('추출 개념', totC, '개') + stat('정답률', subAcc(d), '%');
+  $('[data-drawtable]').innerHTML = d.docs.map(function(x){
+    return '<button type="button" class="drow">' +
+      '<span class="nm"><b>' + esc(x.n) + '</b><span>' + x.p + '쪽 · 개념 ' + x.c + '</span></span>' +
+      '<span class="cell"><span class="k">회독</span><span class="v">' + x.r + '</span></span>' +
+      '<span class="cell hide"><span class="k">오답</span><span class="v">' + x.wrong + '</span></span>' +
+      '<span class="cell"><span class="k">정답률</span><span class="v">' + (x.acc ? x.acc + '%' : '—') + '</span></span>' +
+      '<span class="prog"><span class="lg"><span>' + esc(x.last) + '</span><span>' + x.prog + '%</span></span>' +
+      '<span class="bar' + (x.prog === 100 ? ' ok' : '') + '"><i style="width:' + x.prog + '%"></i></span></span>' +
+      '</button>';
+  }).join('');
+}
+function stat(k, v, u){
+  return '<div class="stat"><div class="k">' + esc(k) + '</div><div class="v">' + esc(v) +
+         '<small>' + esc(u) + '</small></div></div>';
+}
+
+/* ══════════ ④ 문제 풀이 ══════════ */
+function renderTypeFilter(){
+  $$('[data-typefilter] button').forEach(function(b){ b.classList.toggle('on', !!typeOn[b.dataset.type]); });
+  $$('[data-countfilter] button').forEach(function(b){ b.classList.toggle('on', Number(b.dataset.n) === qCount); });
+  var avail = D().quiz.filter(function(q){ return typeOn[q.type]; }).length;
+  var used = qCount > 0 ? Math.min(qCount, avail) : avail;
+  $('[data-setcount]').textContent = used + '문항' + (used < avail ? ' (전체 ' + avail + '개 중)' : '');
+}
+
+function renderQuiz(){
+  var set = items();
+  if (!set.length){ drill = null; set = items(); }
+  if (qi >= set.length) qi = 0;
+  var it = set[qi], q = it.q, d = DATA[it.sub];
+
+  renderTypeFilter();
+  $('[data-setnormal]').hidden = !!drill;
+  $('[data-setdrill]').hidden = !drill;
+  if (drill){
+    $('[data-drilllabel]').textContent = (drill.label || '재출제') + ' · ' + set.length + '문항';
+    $('[data-quizdesc]').textContent = (drill.label || '재출제 세트') + ' · ' + set.length + '문항';
+    $('[data-qsub]').hidden = false;
+    $('[data-qsub]').textContent = d.label;
+  } else {
+    $('[data-quizdesc]').textContent = d.doc + ' · ' + set.length + '문항 세트';
+    $('[data-quizscope]').textContent = d.toc[0][0].replace(/^\d+\.\s*/, '') + ' 외 ' + (d.toc.length - 1) + '개 절';
+    $('[data-qsub]').hidden = true;
+  }
+
+  $('[data-qn]').textContent = qi + 1;
+  $('[data-qtotal]').textContent = set.length;
+  $('[data-qtype]').textContent = TYPE_LABEL[q.type];
+  $('[data-qsrc]').textContent = '출처 ' + q.src;
+  $('[data-qbar]').style.width = ((qi + 1) / set.length * 100) + '%';
+  $('[data-stem]').textContent = q.stem;
+
+  picked = null; graded = false;
+  var chk = $('[data-check]');
+  chk.hidden = false; chk.disabled = true;
+  chk.textContent = q.type === 'essay' ? '채점하기' : '정답 확인';
+  var nx = $('[data-next]');
+  nx.hidden = true;
+  nx.textContent = qi === set.length - 1 ? '결과 보기' : '다음 문항';
+  $('[data-skip]').hidden = false;
+  var v = $('[data-verdict]');
+  v.hidden = true; v.className = 'verdict'; v.innerHTML = '';
+
+  var area = $('[data-answerarea]');
+  if (q.type === 'choice'){
+    area.innerHTML = '<div class="opts">' + q.opts.map(function(t, i){
+      return '<button type="button" class="opt" data-opt="' + i + '" aria-pressed="false">' +
+        '<span class="k">' + KEYS[i] + '</span><span>' + esc(t) + '</span></button>';
+    }).join('') + '</div>';
+    $('[data-keys]').innerHTML = '<kbd>1</kbd><kbd>2</kbd><kbd>3</kbd><kbd>4</kbd> 선택 · <kbd>Enter</kbd> 채점 · <kbd>N</kbd> 다음';
+  } else if (q.type === 'ox'){
+    area.innerHTML = '<div class="oxwrap">' +
+      '<button type="button" class="ox" data-ox="1" aria-pressed="false"><span class="g">O</span><span class="t">맞다</span></button>' +
+      '<button type="button" class="ox" data-ox="0" aria-pressed="false"><span class="g">X</span><span class="t">아니다</span></button></div>';
+    $('[data-keys]').innerHTML = '<kbd>O</kbd><kbd>X</kbd> 선택 · <kbd>Enter</kbd> 채점 · <kbd>N</kbd> 다음';
+  } else if (q.type === 'short'){
+    area.innerHTML = '<div class="shortwrap"><input type="text" data-short placeholder="답을 입력하세요" autocomplete="off">' +
+      '<span class="tip">띄어쓰기와 문장부호는 무시하고, 같은 뜻의 다른 표기도 정답으로 봅니다.</span></div>';
+    $('[data-keys]').innerHTML = '<kbd>Enter</kbd> 채점 · <kbd>N</kbd> 다음';
+    var inp = $('[data-short]');
+    inp.addEventListener('input', function(){
+      picked = inp.value.trim();
+      chk.disabled = !picked;
+    });
+  } else {
+    area.innerHTML = '<div class="essaywrap"><textarea data-essay placeholder="답안을 작성하세요. 채점 기준 세 가지에 맞춰 확인해 드립니다."></textarea>' +
+      '<span class="tip"><span>채점 기준 3개 · 권장 분량 3~5문장</span><span data-count>0자</span></span></div>';
+    $('[data-keys]').innerHTML = '<kbd>N</kbd> 다음 문항';
+    var ta = $('[data-essay]');
+    ta.addEventListener('input', function(){
+      picked = ta.value.trim();
+      $('[data-count]').textContent = ta.value.length + '자';
+      chk.disabled = picked.length < 10;
+    });
+  }
+
+  $('[data-refdoc]').textContent = d.doc;
+  $('[data-refminis]').innerHTML = d.concepts.map(function(c, i){
+    return '<div class="mini' + (i === q.ref ? ' on' : '') + '">' +
+      '<div class="mh"><b>' + esc(c.t) + '</b><span class="p">' + esc(c.p) + '</span></div>' +
+      '<p>' + esc(c.d) + '</p></div>';
+  }).join('');
+}
+
+function gradeQuiz(){
+  var it = items()[qi], q = it.q, v = $('[data-verdict]');
+  graded = true;
+  $('[data-check]').hidden = true;
+  $('[data-next]').hidden = false;
+  $('[data-skip]').hidden = true;
+
+  var right = null;
+
+  if (q.type === 'choice'){
+    right = picked === q.answer;
+    $$('.opt', $('[data-answerarea]')).forEach(function(o){
+      var i = Number(o.dataset.opt);
+      if (i === q.answer) o.classList.add('right');
+      else if (i === picked) o.classList.add('wrong');
+      o.setAttribute('aria-pressed', 'false');
+    });
+  } else if (q.type === 'ox'){
+    right = (picked === 1) === q.answer;
+    $$('.ox', $('[data-answerarea]')).forEach(function(o){
+      var val = o.dataset.ox === '1';
+      if (val === q.answer) o.classList.add('right');
+      else if (Number(o.dataset.ox) === picked) o.classList.add('wrong');
+      o.setAttribute('aria-pressed', 'false');
+    });
+  } else if (q.type === 'short'){
+    right = q.accept.some(function(a){ return norm(a) === norm(picked || ''); });
+    var inp = $('[data-short]');
+    if (inp){ inp.classList.add(right ? 'right' : 'wrong'); inp.readOnly = true; }
+  } else {
+    right = 'part';
+  }
+
+  if (q.type === 'essay'){
+    var met = q.rubric.filter(function(r){ return r.ok; }).length;
+    v.className = 'verdict neutral';
+    v.innerHTML =
+      '<div class="vh"><span class="vt">채점 기준 ' + met + ' / ' + q.rubric.length + ' 충족</span>' +
+      '<span class="chip">서술형</span></div>' + rubricHTML(q) +
+      '<p class="why">' + esc(q.fb) + '</p>' + modelHTML(q) +
+      '<span class="disclaim">※ 시안에서는 예시 채점 결과가 표시됩니다. 실제로는 작성한 답안을 기준별로 대조합니다.</span>' +
+      srcBtn(q, it.sub);
+  } else {
+    v.className = 'verdict' + (right ? '' : ' bad');
+    var mine = '';
+    if (!right){
+      if (q.type === 'choice') mine = ' · 고른 답 ' + KEYS[picked];
+      if (q.type === 'ox') mine = ' · 고른 답 ' + (picked === 1 ? 'O' : 'X');
+      if (q.type === 'short') mine = ' · 쓴 답 “' + (picked || '') + '”';
+    }
+    v.innerHTML =
+      '<div class="vh"><span class="vt">' + (right ? '정답' : '오답') + esc(mine) + '</span>' +
+      '<span class="chip ' + (right ? 'ok' : 'bad') + '">정답 ' + esc(realAnswer(q)) + '</span></div>' +
+      '<p class="why">' + esc(q.why) + '</p>' + srcBtn(q, it.sub);
+  }
+
+  v.hidden = false;
+  session[qi] = {right:right, picked:picked};
+  var nx = $('[data-next]');
+  if (nx && typeof nx.focus === 'function') nx.focus();
+}
+
+function realAnswer(q){
+  if (q.type === 'choice') return KEYS[q.answer] + ' ' + q.opts[q.answer];
+  if (q.type === 'ox') return q.answer ? 'O' : 'X';
+  return q.answer;
+}
+function myAnswer(q, p){
+  if (p === null || p === undefined || p === '') return '미응답';
+  if (q.type === 'choice') return KEYS[p] || '미응답';
+  if (q.type === 'ox') return p === 1 ? 'O' : 'X';
+  if (q.type === 'short') return '“' + p + '”';
+  return '작성함';
+}
+function rubricHTML(q){
+  return '<ul class="rubric">' + q.rubric.map(function(r){
+    return '<li class="' + (r.ok ? 'y' : 'n') + '">' + (r.ok ? ICON_CHECK : ICON_X) +
+           '<span>' + esc(r.t) + '</span></li>'; }).join('') + '</ul>';
+}
+function modelHTML(q){
+  return '<div class="model"><b>모범 답안</b><br>' + esc(q.model) + '</div>';
+}
+function srcBtn(q, subKey){
+  var d = subKey ? DATA[subKey] : D();
+  return '<button type="button" class="srclink" data-src="' + q.ref + '" data-srcsub="' + (subKey || sub) + '">' +
+         ICON_ARROW + '정리본 ' + esc(q.src) + ' · ' + esc(d.concepts[q.ref].t) + '</button>';
+}
+
+function nextQ(){
+  if (qi >= items().length - 1){ go('result'); return; }
+  qi++; renderQuiz();
+}
+function restart(){ qi = 0; session = []; allOpen = false; renderQuiz(); go('quiz'); }
+
+function startDrill(list, label){
+  if (!list || !list.length) return;
+  drill = list; drill.label = label;
+  qi = 0; session = []; allOpen = false; resultFilter = 'all';
+  renderQuiz(); go('quiz');
+}
+function exitDrill(){ drill = null; qi = 0; session = []; renderQuiz(); go('quiz'); }
+
+/* 채점 결과의 틀린 문항을 오답 노트로 옮깁니다 */
+function addWrongs(){
+  var set = items(), added = 0;
+  set.forEach(function(it, i){
+    var r = session[i];
+    if (!r || r.right === true) return;
+    var idx = DATA[it.sub].quiz.indexOf(it.q);
+    if (idx < 0) return;
+    var found = null;
+    WRONGS.forEach(function(w){ if (w.sub === it.sub && w.qi === idx) found = w; });
+    if (found){ found.n += 1; found.last = '오늘'; found.mine = r.picked; }
+    else { WRONGS.push({sub:it.sub, qi:idx, n:1, last:'오늘', mine:r.picked}); }
+    added++;
+  });
+  if (added){
+    WRONGS.sort(function(a,b){ return b.n - a.n; });
+    selWrong = {}; openWrong = {};
+    renderRail();
+  }
+}
+
+/* ══════════ ⑤ 정답 & 해설 ══════════ */
+function renderResult(){
+  var set = items();
+  var done = set.map(function(_, i){ return session[i] || {right:false, picked:null}; });
+  var nRight = done.filter(function(r){ return r.right === true; }).length;
+  var nPart = done.filter(function(r){ return r.right === 'part'; }).length;
+  var nWrong = set.length - nRight - nPart;
+  var graded9 = set.length - nPart;   // 정오가 갈리는 문항 수 (서술형 제외)
+  var pct = graded9 ? Math.round(nRight / graded9 * 100) : null;
+
+  $('[data-rsum]').innerHTML =
+    stat('정답률', pct === null ? '—' : pct, pct === null ? '' : '%') +
+    stat('정답', nRight, '문항') + stat('오답', nWrong, '문항') +
+    stat('서술형', nPart, '문항');
+  $('[data-rtime]').textContent = '소요 ' + Math.floor(set.length * 0.97) + ':' +
+    String((set.length * 17) % 60).padStart(2, '0');
+
+  $$('[data-rfilter] button').forEach(function(b){ b.classList.toggle('on', b.dataset.rf === resultFilter); });
+  $('[data-rtoggle]').textContent = allOpen ? '모두 접기' : '모두 펼치기';
+
+  var rows = set.map(function(it, i){ return {it:it, q:it.q, r:done[i], i:i}; })
+    .filter(function(o){ return resultFilter === 'all' || o.r.right !== true; });
+
+  if (!rows.length){
+    $('[data-rlist]').innerHTML = '<div class="empty" style="padding:40px 20px;text-align:center;color:var(--ink3);' +
+      'font-size:13px;border:1px dashed var(--line);border-radius:5px">틀린 문항이 없습니다.</div>';
+    return;
+  }
+
+  $('[data-rlist]').innerHTML = rows.map(function(o){
+    var q = o.q, r = o.r;
+    var cls = r.right === true ? 'right' : (r.right === 'part' ? 'part' : 'wrong');
+    var open = allOpen || cls !== 'right';
+    return '<div class="ritem ' + cls + (open ? ' open' : '') + '">' +
+      '<button type="button" class="rtop">' +
+        '<span class="no">' + (o.i + 1) + '</span>' +
+        '<span class="q"><b>' + esc(q.stem) + '</b>' +
+          '<span class="ans"><span class="mine ' + (cls === 'right' ? 'yes' : 'no') + '">내 답 ' +
+            esc(myAnswer(q, r.picked)) + '</span>' +
+          '<span class="real">정답 ' + esc(realAnswer(q)) + '</span></span></span>' +
+        '<span class="rr"><span class="chip ' + (cls === 'right' ? 'ok' : cls === 'part' ? 'warn' : 'bad') + '">' +
+          (cls === 'right' ? '정답' : cls === 'part' ? '부분' : '오답') + '</span>' +
+          '<span class="chip">' + TYPE_LABEL[q.type] + '</span>' + ICON_CARET + '</span>' +
+      '</button>' +
+      '<div class="rbody"' + (open ? '' : ' hidden') + '>' +
+        (q.type === 'essay'
+          ? rubricHTML(q) + '<p class="why">' + esc(q.fb) + '</p>' + modelHTML(q)
+          : '<p class="why">' + esc(q.why) + '</p>') +
+        srcBtn(q, o.it.sub) +
+      '</div></div>';
+  }).join('');
+}
+
+/* ══════════ ⑥ 오답 노트 ══════════ */
+function renderWrong(){
+  $('[data-wexpand]').textContent = allWrongOpen() ? '모두 접기' : '모두 펼치기';
+  $('[data-wlist]').innerHTML = WRONGS.map(function(w, i){
+    var d = DATA[w.sub], q = d.quiz[w.qi], open = !!openWrong[i];
+    return '<div class="witem' + (selWrong[i] ? ' sel' : '') + (open ? ' open' : '') + '">' +
+      '<button type="button" class="wcheck" data-wcheck="' + i + '" aria-label="선택">' +
+        '<span class="box">' + ICON_CHECK + '</span></button>' +
+      '<button type="button" class="wopen" data-wopen="' + i + '">' +
+        '<b>' + esc(q.stem) + '</b>' +
+        '<span class="tags"><span class="chip ac">' + esc(d.label) + '</span>' +
+        '<span class="chip">' + esc(TYPE_LABEL[q.type]) + '</span>' +
+        '<span class="chip">' + esc(d.docs[0].n + ' · ' + q.src) + '</span></span></button>' +
+      '<span class="wside"><span class="cnt">' + w.n + '회 틀림</span><span>' + esc(w.last) + '</span>' +
+        ICON_CARET + '</span>' +
+      (open ? '<div class="wbody">' +
+        '<div class="answerline"><span class="mine">내가 쓴 답 · ' + esc(myAnswer(q, w.mine)) + '</span>' +
+        '<span class="real">정답 · ' + esc(realAnswer(q)) + '</span></div>' +
+        (q.type === 'essay'
+          ? rubricHTML(q) + '<p class="why" style="font-size:12.5px;line-height:1.8;color:var(--ink2)">' + esc(q.fb) + '</p>' + modelHTML(q)
+          : '<p class="why" style="font-size:12.5px;line-height:1.8;color:var(--ink2)">' + esc(q.why) + '</p>') +
+        srcBtn(q, w.sub) +
+      '</div>' : '') +
+    '</div>';
+  }).join('');
+  updateWrongBar();
+}
+function allWrongOpen(){ return WRONGS.every(function(_, i){ return openWrong[i]; }); }
+function updateWrongBar(){
+  var n = WRONGS.filter(function(_, i){ return selWrong[i]; }).length;
+  $('[data-wsel]').textContent = n;
+  $('[data-wstart]').disabled = n === 0;
+  $('[data-wstart]').textContent = n ? '선택한 ' + n + '문항 다시 풀기' : '선택한 문항 다시 풀기';
+}
+
+/* ══════════ ⑦ 취약점 ══════════ */
+function renderWeak(){
+  var d = D();
+  $('[data-weaksub]').textContent = d.label;
+  $('[data-weakdiag]').textContent = d.diag;
+
+  $('[data-weaklist]').innerHTML = d.weak.map(function(w, i){
+    var c = d.concepts[w.c];
+    var lvl = w.acc < 55 ? 'lo' : (w.acc < 75 ? 'mid' : '');
+    var barCls = w.acc < 55 ? ' bad' : (w.acc < 75 ? ' warn' : ' ok');
+    return '<div class="wkitem">' +
+      '<div class="wkhead"><span class="rank">0' + (i + 1) + '</span><b>' + esc(c.t) + '</b>' +
+        '<span class="p">' + esc(c.p) + '</span>' +
+        '<span class="acc ' + lvl + '">' + w.acc + '%</span></div>' +
+      '<div class="bar lg' + barCls + '"><i style="width:' + w.acc + '%"></i></div>' +
+      '<p class="wkreason">' + esc(w.why) + '</p>' +
+      '<div class="wkfoot"><span>이 개념에서 ' + w.wrong + '문항 틀림</span>' +
+        '<button type="button" class="srclink" style="font-size:11.5px" data-src="' + w.c + '" data-srcsub="' + sub + '">' +
+        ICON_ARROW + '정리본에서 보기</button></div>' +
+    '</div>';
+  }).join('');
+
+  $('[data-typeacc]').innerHTML = TYPE_ORDER.map(function(t){
+    var v = d.typeAcc[t];
+    var cls = v < 60 ? ' bad' : (v < 75 ? ' warn' : ' ok');
+    return '<div class="taccrow"><div class="tl"><span>' + TYPE_LABEL[t] + '</span>' +
+      '<span class="n">' + v + '%</span></div>' +
+      '<div class="bar' + cls + '"><i style="width:' + v + '%"></i></div></div>';
+  }).join('');
+
+  $('[data-weakplan]').innerHTML = d.plan.map(function(p, i){
+    return '<div class="planrow"><span class="num">' + (i + 1) + '</span><span>' + esc(p) + '</span></div>';
+  }).join('');
+}
+
+/* ══════════ 이벤트 ══════════ */
+document.addEventListener('click', function(e){
+  var t = e.target;
+
+  if (t.closest('[data-theme-btn]')){
+    document.documentElement.setAttribute('data-theme', effTheme() === 'dark' ? 'light' : 'dark');
+    renderTheme(); return;
+  }
+
+  var src = t.closest('[data-src]');
+  if (src){
+    if (src.dataset.srcsub && src.dataset.srcsub !== sub) switchSub(src.dataset.srcsub);
+    focusConcept = Number(src.dataset.src);
+    go('summary'); return;
+  }
+
+  var goBtn = t.closest('[data-go]');
+  if (goBtn){
+    if (goBtn.hasAttribute('data-addwrong')) addWrongs();
+    go(goBtn.dataset.go); return;
+  }
+
+  var stab = t.closest('[data-sub]');
+  if (stab){ switchSub(stab.dataset.sub); return; }
+
+  if (t.closest('[data-startproc]')){ startProc(); return; }
+
+  if (t.closest('[data-drillexit]')){ exitDrill(); return; }
+
+  var dd = t.closest('[data-d]');
+  if (dd){ density = Number(dd.dataset.d); renderFull(); return; }
+  if (t.closest('[data-dall]')){ density = 1; renderFull(); return; }
+
+  var cf = t.closest('[data-n]');
+  if (cf){
+    if (drill) return;
+    qCount = Number(cf.dataset.n);
+    qi = 0; session = []; allOpen = false;
+    renderQuiz(); return;
+  }
+
+  var tf = t.closest('[data-type]');
+  if (tf){
+    if (drill) return;
+    var k = tf.dataset.type;
+    var on = Object.keys(typeOn).filter(function(x){ return typeOn[x]; });
+    if (typeOn[k] && on.length === 1) return;     // 마지막 하나는 끄지 않음
+    typeOn[k] = !typeOn[k];
+    qi = 0; session = []; allOpen = false;
+    renderQuiz(); return;
+  }
+
+  var opt = t.closest('.opt[data-opt]');
+  if (opt && !graded){
+    $$('.opt', $('[data-answerarea]')).forEach(function(x){ x.setAttribute('aria-pressed','false'); });
+    opt.setAttribute('aria-pressed','true');
+    picked = Number(opt.dataset.opt);
+    $('[data-check]').disabled = false; return;
+  }
+
+  var ox = t.closest('.ox[data-ox]');
+  if (ox && !graded){
+    $$('.ox', $('[data-answerarea]')).forEach(function(x){ x.setAttribute('aria-pressed','false'); });
+    ox.setAttribute('aria-pressed','true');
+    picked = Number(ox.dataset.ox);
+    $('[data-check]').disabled = false; return;
+  }
+
+  if (t.closest('[data-check]')){
+    if (!graded && picked !== null && picked !== '') gradeQuiz();
+    return;
+  }
+  if (t.closest('[data-next]')){ nextQ(); return; }
+  if (t.closest('[data-skip]')){ session[qi] = {right:false, picked:null}; nextQ(); return; }
+  if (t.closest('[data-restart]')){ restart(); return; }
+
+  var rf = t.closest('[data-rf]');
+  if (rf){ resultFilter = rf.dataset.rf; renderResult(); return; }
+  if (t.closest('[data-rtoggle]')){ allOpen = !allOpen; renderResult(); return; }
+
+  var rtop = t.closest('.rtop');
+  if (rtop){
+    var item = rtop.parentElement, body = $('.rbody', item);
+    body.hidden = !body.hidden;
+    item.classList.toggle('open', !body.hidden);
+    return;
+  }
+
+  var wc = t.closest('[data-wcheck]');
+  if (wc){
+    var wi = wc.dataset.wcheck;
+    selWrong[wi] = !selWrong[wi];
+    wc.parentElement.classList.toggle('sel', selWrong[wi]);
+    updateWrongBar(); return;
+  }
+  var wo = t.closest('[data-wopen]');
+  if (wo){
+    var oi = wo.dataset.wopen;
+    openWrong[oi] = !openWrong[oi];
+    renderWrong(); return;
+  }
+  if (t.closest('[data-wexpand]')){
+    var closeAll = allWrongOpen();
+    WRONGS.forEach(function(_, i){ openWrong[i] = !closeAll; });
+    renderWrong(); return;
+  }
+  if (t.closest('[data-wall]')){
+    var selAll = WRONGS.every(function(_, i){ return selWrong[i]; });
+    WRONGS.forEach(function(_, i){ selWrong[i] = !selAll; });
+    renderWrong(); return;
+  }
+  if (t.closest('[data-wstart]')){
+    var sel = WRONGS.filter(function(_, i){ return selWrong[i]; });
+    startDrill(sel.map(function(w){ return {sub:w.sub, q:DATA[w.sub].quiz[w.qi]}; }), '오답 노트');
+    return;
+  }
+  if (t.closest('[data-weakdrill]')){
+    var refs = D().weak.map(function(w){ return w.c; });
+    var qs = D().quiz.filter(function(q){ return refs.indexOf(q.ref) >= 0; });
+    startDrill(qs.map(function(q){ return {sub:sub, q:q}; }), D().label + ' 취약 개념');
+    return;
+  }
+
+  var citem = t.closest('.citem');
+  if (citem){
+    $$('.citem').forEach(function(x){ x.classList.toggle('on', x === citem); });
+    showExcerpt(Number(citem.dataset.c)); return;
+  }
+  var docI = t.closest('.doc-i');
+  if (docI){ $$('.doc-i').forEach(function(x){ x.classList.toggle('on', x === docI); }); return; }
+  var drow = t.closest('.drow');
+  if (drow){ go('summary'); return; }
+});
+
+function switchSub(key){
+  sub = key;
+  $$('.stab').forEach(function(x){ x.classList.toggle('on', x.dataset.sub === key); });
+  drill = null;
+  qi = 0; session = []; allOpen = false; resultFilter = 'all';
+  renderRail(); renderQuiz();
+  if (screen === 'summary') renderSummary();
+  if (screen === 'full') renderFull();
+  if (screen === 'drawer') renderDrawer();
+  if (screen === 'weak') renderWeak();
+  if (screen === 'result') go('quiz');
+}
+
+document.addEventListener('keydown', function(e){
+  var tag = e.target.tagName;
+  if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT'){
+    if (e.key === 'Enter' && e.target.hasAttribute('data-short') && !graded && picked){
+      gradeQuiz(); e.preventDefault();
+    }
+    return;
+  }
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+
+  var map = {'1':'upload','2':'summary','3':'full','4':'drawer','5':'quiz','6':'wrong','7':'weak'};
+  if (map[e.key]){
+    if (screen === 'quiz' && !graded && items()[qi].q.type === 'choice'){
+      var i = Number(e.key) - 1, set = items();
+      if (i >= 0 && i < set[qi].q.opts.length){
+        var b = $('.opt[data-opt="' + i + '"]', $('[data-answerarea]'));
+        if (b){ b.click(); e.preventDefault(); return; }
+      }
+    }
+    go(map[e.key]); e.preventDefault(); return;
+  }
+  if (screen !== 'quiz') return;
+
+  var q = items()[qi].q;
+  if (!graded && q.type === 'ox' && /^[oOxX]$/.test(e.key)){
+    var el = $('.ox[data-ox="' + (/[oO]/.test(e.key) ? '1' : '0') + '"]', $('[data-answerarea]'));
+    if (el) el.click();
+    e.preventDefault(); return;
+  }
+  // Enter는 버튼·탭에 포커스가 있을 때 그 버튼을 눌러야 하므로, 포커스가 없을 때만 채점합니다.
+  if (e.key === 'Enter' && !graded && !$('[data-check]').disabled &&
+      (e.target === document.body || $('[data-answerarea]').contains(e.target))){
+    gradeQuiz(); e.preventDefault(); return;
+  }
+  if ((e.key === 'n' || e.key === 'N') && graded){ nextQ(); e.preventDefault(); }
+});
+
+/* ══════════ 시작 ══════════ */
+renderTheme();
+renderRail();
+renderQueue(-1);
+renderQuiz();
+go('quiz');
+booted = true;
+})();
+</script>
